@@ -1,68 +1,105 @@
+"use client";
+
+import { motion } from "framer-motion";
 import ProjectCard from "@/components/ProjectCard";
 import ContactCTA from "@/components/ContactCTA";
-import AnimatedSection from "@/components/AnimatedSection";
 import { projects } from "@/data/projects";
-import type { Metadata } from "next";
 
-export const metadata: Metadata = {
-  title: "Projects — Keith Paul",
-  description: "Case studies and work by Keith Paul — UI/UX design, Shopify, branding, and more.",
-};
+function ScrollReveal({
+  children,
+  delay = 0,
+  className = "",
+}: {
+  children: React.ReactNode;
+  delay?: number;
+  className?: string;
+}) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 32 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-60px" }}
+      transition={{ duration: 0.7, delay, ease: [0.16, 1, 0.3, 1] }}
+      className={className}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+const featured = projects.filter((p) => p.featured);
+const more = projects.filter((p) => !p.featured);
 
 export default function ProjectsPage() {
-  const featured = projects.filter((p) => p.featured);
-  const other = projects.filter((p) => !p.featured);
-
   return (
     <>
-      <section className="bg-stone-50 py-20 md:py-28">
-        <div className="max-w-6xl mx-auto px-6">
-          <AnimatedSection>
-            <p className="text-violet-600 font-semibold text-sm uppercase tracking-widest mb-3">
-              My work
-            </p>
-            <h1 className="text-5xl md:text-6xl font-bold text-stone-900 mb-4">Projects</h1>
-            <p className="text-stone-500 text-lg max-w-xl">
-              A selection of case studies and projects from UI/UX design, Shopify, branding, and ad
-              design.
-            </p>
-          </AnimatedSection>
+      {/* Hero */}
+      <section className="bg-[#0a0a0a] pt-16 pb-20">
+        <div className="max-w-7xl mx-auto px-6 md:px-10 pt-16">
+          <motion.p
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-[#caff00] text-xs font-bold uppercase tracking-[0.2em] mb-6"
+          >
+            Work
+          </motion.p>
+          <motion.h1
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+            className="text-[11vw] md:text-[8vw] font-black uppercase leading-none tracking-[-0.04em] text-white mb-6"
+          >
+            Projects
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.25 }}
+            className="text-[#555] text-lg max-w-xl"
+          >
+            UI/UX design, Shopify, branding, and ad design — from research to production.
+          </motion.p>
         </div>
       </section>
 
-      <section className="bg-stone-50 pb-20">
-        <div className="max-w-6xl mx-auto px-6">
-          <AnimatedSection>
-            <p className="text-stone-400 text-xs font-semibold uppercase tracking-widest mb-6">
-              Featured
-            </p>
-          </AnimatedSection>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+      {/* Featured */}
+      <section className="bg-[#0e0e0e] border-t border-[#1a1a1a] py-16 md:py-20">
+        <div className="max-w-7xl mx-auto px-6 md:px-10">
+          <ScrollReveal className="flex items-center gap-4 mb-12">
+            <span className="text-[#caff00] text-xs font-mono font-bold">Featured</span>
+            <div className="h-px flex-1 bg-[#1a1a1a]" />
+          </ScrollReveal>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             {featured.map((project, i) => (
-              <AnimatedSection key={project.slug} delay={i * 0.1}>
-                <ProjectCard project={project} />
-              </AnimatedSection>
+              <ScrollReveal key={project.slug} delay={i * 0.1}>
+                <ProjectCard project={project} index={i} />
+              </ScrollReveal>
             ))}
           </div>
-
-          {other.length > 0 && (
-            <>
-              <AnimatedSection>
-                <p className="text-stone-400 text-xs font-semibold uppercase tracking-widest mb-6">
-                  More work
-                </p>
-              </AnimatedSection>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {other.map((project, i) => (
-                  <AnimatedSection key={project.slug} delay={i * 0.1}>
-                    <ProjectCard project={project} />
-                  </AnimatedSection>
-                ))}
-              </div>
-            </>
-          )}
         </div>
       </section>
+
+      {/* More */}
+      {more.length > 0 && (
+        <section className="bg-[#0a0a0a] border-t border-[#1a1a1a] py-16 md:py-20">
+          <div className="max-w-7xl mx-auto px-6 md:px-10">
+            <ScrollReveal className="flex items-center gap-4 mb-12">
+              <span className="text-[#caff00] text-xs font-mono font-bold">More work</span>
+              <div className="h-px flex-1 bg-[#1a1a1a]" />
+            </ScrollReveal>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+              {more.map((project, i) => (
+                <ScrollReveal key={project.slug} delay={i * 0.1}>
+                  <ProjectCard project={project} index={featured.length + i} />
+                </ScrollReveal>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       <ContactCTA />
     </>

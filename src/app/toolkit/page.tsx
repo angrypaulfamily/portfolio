@@ -1,94 +1,120 @@
+"use client";
+
+import { motion } from "framer-motion";
 import ContactCTA from "@/components/ContactCTA";
-import AnimatedSection from "@/components/AnimatedSection";
 import { toolkit } from "@/data/toolkit";
-import type { Metadata } from "next";
 
-export const metadata: Metadata = {
-  title: "Toolkit — Keith Paul",
-  description: "The tools Keith Paul uses across design, development, and AI-powered workflows.",
+const colorHex: Record<string, string> = {
+  violet: "#7C3AED",
+  cyan: "#06B6D4",
+  orange: "#F97316",
+  pink: "#EC4899",
 };
 
-const colorMap: Record<string, { tag: string; dot: string; header: string }> = {
-  violet: {
-    tag: "bg-violet-100 text-violet-700",
-    dot: "bg-violet-500",
-    header: "text-violet-600",
-  },
-  cyan: {
-    tag: "bg-cyan-100 text-cyan-700",
-    dot: "bg-cyan-500",
-    header: "text-cyan-600",
-  },
-  orange: {
-    tag: "bg-orange-100 text-orange-700",
-    dot: "bg-orange-500",
-    header: "text-orange-600",
-  },
-  pink: {
-    tag: "bg-pink-100 text-pink-700",
-    dot: "bg-pink-500",
-    header: "text-pink-600",
-  },
-};
+function ScrollReveal({
+  children,
+  delay = 0,
+  className = "",
+}: {
+  children: React.ReactNode;
+  delay?: number;
+  className?: string;
+}) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-60px" }}
+      transition={{ duration: 0.6, delay, ease: [0.16, 1, 0.3, 1] }}
+      className={className}
+    >
+      {children}
+    </motion.div>
+  );
+}
 
 export default function ToolkitPage() {
   return (
     <>
       {/* Hero */}
-      <section className="bg-stone-50 py-20 md:py-28">
-        <div className="max-w-6xl mx-auto px-6">
-          <AnimatedSection>
-            <p className="text-violet-600 font-semibold text-sm uppercase tracking-widest mb-3">
-              My stack
-            </p>
-            <h1 className="text-5xl md:text-6xl font-bold text-stone-900 mb-4">My Toolkit</h1>
-            <p className="text-stone-500 text-lg max-w-xl">
-              A curated set of tools I use across design, development, and AI-powered workflows.
-              Each one earns its place by actually making the work better.
-            </p>
-          </AnimatedSection>
+      <section className="bg-[#0a0a0a] pt-16 pb-20">
+        <div className="max-w-7xl mx-auto px-6 md:px-10 pt-16">
+          <motion.p
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-[#caff00] text-xs font-bold uppercase tracking-[0.2em] mb-6"
+          >
+            Stack
+          </motion.p>
+          <motion.h1
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+            className="text-[11vw] md:text-[8vw] font-black uppercase leading-none tracking-[-0.04em] text-white mb-6"
+          >
+            Toolkit
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.25 }}
+            className="text-[#555] text-lg max-w-xl"
+          >
+            Curated tools across design, development, and AI-powered workflows. Every tool earns
+            its place by making the work better.
+          </motion.p>
         </div>
       </section>
 
-      {/* Tool Categories */}
-      <section className="bg-white pb-24 border-t border-stone-100">
-        <div className="max-w-6xl mx-auto px-6">
-          {toolkit.map((category, catIndex) => {
-            const colors = colorMap[category.color] ?? colorMap.violet;
-            return (
-              <div key={category.category} className="py-14 border-b border-stone-100 last:border-none">
-                <AnimatedSection delay={catIndex * 0.05}>
-                  <div className="flex items-center gap-3 mb-10">
-                    <span className={`w-2.5 h-2.5 rounded-full ${colors.dot}`} />
-                    <h2 className={`text-sm font-bold uppercase tracking-widest ${colors.header}`}>
-                      {category.category}
-                    </h2>
-                  </div>
-                </AnimatedSection>
+      {/* Categories */}
+      {toolkit.map((category, catIndex) => {
+        const color = colorHex[category.color] ?? "#7C3AED";
+        const isEven = catIndex % 2 === 0;
+        return (
+          <section
+            key={category.category}
+            className={`border-t border-[#1a1a1a] py-16 md:py-20 ${isEven ? "bg-[#0e0e0e]" : "bg-[#0a0a0a]"}`}
+          >
+            <div className="max-w-7xl mx-auto px-6 md:px-10">
+              <ScrollReveal className="flex items-center gap-4 mb-12" delay={0.05}>
+                <span
+                  className="text-xs font-mono font-bold"
+                  style={{ color }}
+                >
+                  0{catIndex + 1}
+                </span>
+                <div className="h-px flex-1 bg-[#1a1a1a]" />
+                <span className="text-[#444] text-xs uppercase tracking-widest">
+                  {category.category}
+                </span>
+              </ScrollReveal>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-                  {category.tools.map((tool, i) => (
-                    <AnimatedSection key={tool.name} delay={catIndex * 0.05 + i * 0.07}>
-                      <div className="bg-stone-50 rounded-2xl p-6 border border-stone-100 hover:border-stone-200 hover:shadow-sm transition-all">
-                        <div className="flex items-start justify-between gap-2 mb-3">
-                          <h3 className="font-bold text-stone-900 text-base">{tool.name}</h3>
-                          <span
-                            className={`text-xs font-semibold px-2 py-0.5 rounded-full shrink-0 ${colors.tag}`}
-                          >
-                            {tool.subtitle.split(" ").slice(0, 2).join(" ")}
-                          </span>
-                        </div>
-                        <p className="text-xs font-medium text-stone-400 mb-3">{tool.subtitle}</p>
-                        <p className="text-stone-600 text-sm leading-relaxed">{tool.description}</p>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {category.tools.map((tool, i) => (
+                  <ScrollReveal key={tool.name} delay={catIndex * 0.04 + i * 0.06}>
+                    <div
+                      className="bg-[#111] border border-[#1a1a1a] rounded-2xl p-6 hover:border-[#2a2a2a] transition-all group"
+                    >
+                      <div className="flex items-start justify-between gap-3 mb-1">
+                        <h3 className="text-white font-black text-base">{tool.name}</h3>
+                        <span
+                          className="w-2 h-2 rounded-full shrink-0 mt-1.5"
+                          style={{ backgroundColor: color }}
+                        />
                       </div>
-                    </AnimatedSection>
-                  ))}
-                </div>
+                      <p className="text-xs uppercase tracking-widest mb-4" style={{ color, opacity: 0.7 }}>
+                        {tool.subtitle}
+                      </p>
+                      <p className="text-[#666] text-sm leading-relaxed">{tool.description}</p>
+                    </div>
+                  </ScrollReveal>
+                ))}
               </div>
-            );
-          })}
-        </div>
-      </section>
+            </div>
+          </section>
+        );
+      })}
 
       <ContactCTA />
     </>

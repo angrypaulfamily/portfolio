@@ -1,65 +1,53 @@
 import Link from "next/link";
-import { Mail } from "lucide-react";
-import LinkedInIcon from "@/components/LinkedInIcon";
+import Marquee from "@/components/Marquee";
 
-const links = [
-  { href: "/", label: "Home" },
-  { href: "/about", label: "About" },
-  { href: "/projects", label: "Projects" },
-  { href: "/toolkit", label: "Toolkit" },
-  { href: "/contact", label: "Contact" },
+const skills = [
+  "UI/UX Design",
+  "Figma",
+  "Shopify",
+  "Branding",
+  "User Research",
+  "Prototyping",
+  "Design Systems",
+  "AI Workflows",
+  "Developer Handoff",
+  "Framer",
 ];
 
 export default function Footer() {
   return (
-    <footer className="bg-stone-900 text-stone-400">
-      <div className="max-w-6xl mx-auto px-6 py-12">
-        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
-          <div>
-            <div className="flex items-center gap-2 mb-3">
-              <span className="w-8 h-8 rounded-lg bg-violet-600 flex items-center justify-center text-white text-sm font-bold">
-                KP
-              </span>
-              <span className="text-white font-semibold">Keith Paul</span>
-            </div>
-            <p className="text-sm text-stone-500">UI/UX Designer · Remote / Bangkok</p>
-          </div>
+    <footer className="bg-[#0a0a0a] border-t border-[#1a1a1a]">
+      <div className="py-5 border-b border-[#1a1a1a]">
+        <Marquee
+          items={skills}
+          slow
+          className="text-xs font-semibold uppercase tracking-widest text-[#333]"
+        />
+      </div>
 
-          <nav className="flex flex-wrap gap-x-6 gap-y-2">
-            {links.map((link) => (
+      <div className="max-w-7xl mx-auto px-6 md:px-10 py-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+        <div className="flex items-center gap-2">
+          <span className="text-white font-black text-lg">KP</span>
+          <span className="w-1.5 h-1.5 rounded-full bg-[#caff00] blink" />
+          <span className="text-[#444] text-sm ml-2">Remote / Bangkok · 2025</span>
+        </div>
+
+        <nav className="flex flex-wrap gap-6">
+          {["/", "/about", "/projects", "/toolkit", "/contact"].map((href) => {
+            const label = href === "/" ? "Home" : href.slice(1).charAt(0).toUpperCase() + href.slice(2);
+            return (
               <Link
-                key={link.href}
-                href={link.href}
-                className="text-sm hover:text-white transition-colors"
+                key={href}
+                href={href}
+                className="text-[#555] hover:text-white text-sm transition-colors"
               >
-                {link.label}
+                {label}
               </Link>
-            ))}
-          </nav>
+            );
+          })}
+        </nav>
 
-          <div className="flex items-center gap-3">
-            <a
-              href="mailto:keithpaul00@gmail.com"
-              className="flex items-center gap-2 text-sm hover:text-white transition-colors"
-              aria-label="Email Keith"
-            >
-              <Mail size={16} />
-            </a>
-            <a
-              href="https://www.linkedin.com/in/keith-paul-1450241a3/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 text-sm hover:text-white transition-colors"
-              aria-label="LinkedIn"
-            >
-              <LinkedInIcon size={16} />
-            </a>
-          </div>
-        </div>
-
-        <div className="mt-8 pt-8 border-t border-stone-800 text-center text-sm text-stone-600">
-          &copy; 2025 Keith Paul. All rights reserved.
-        </div>
+        <p className="text-[#333] text-xs">&copy; 2025 Keith Paul. All rights reserved.</p>
       </div>
     </footer>
   );

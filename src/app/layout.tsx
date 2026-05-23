@@ -3,9 +3,11 @@ import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import CustomCursor from "@/components/CustomCursor";
 
 const font = Plus_Jakarta_Sans({
   subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700", "800"],
   variable: "--font-sans",
   display: "swap",
 });
@@ -23,8 +25,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${font.variable} h-full`}>
-      <body className="min-h-full flex flex-col font-sans">
+    <html lang="en" className={`${font.variable} grain`}>
+      <body className="min-h-screen flex flex-col font-sans bg-[#0a0a0a] text-white">
+        <CustomCursor />
         <Navbar />
         <main className="flex-1 pt-16">{children}</main>
         <Footer />

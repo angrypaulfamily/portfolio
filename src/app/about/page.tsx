@@ -1,197 +1,216 @@
+"use client";
+
+import Link from "next/link";
+import { motion } from "framer-motion";
+import { ArrowUpRight } from "lucide-react";
 import ContactCTA from "@/components/ContactCTA";
-import AnimatedSection from "@/components/AnimatedSection";
+import Marquee from "@/components/Marquee";
 import { experience, education } from "@/data/experience";
 import { testimonials } from "@/data/testimonials";
-import type { Metadata } from "next";
 
-export const metadata: Metadata = {
-  title: "About — Keith Paul",
-  description: "Get to know Keith Paul, a UI/UX Designer with 5+ years of experience. Remote / Bangkok.",
-};
+function ScrollReveal({
+  children,
+  delay = 0,
+  className = "",
+}: {
+  children: React.ReactNode;
+  delay?: number;
+  className?: string;
+}) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 32 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-60px" }}
+      transition={{ duration: 0.7, delay, ease: [0.16, 1, 0.3, 1] }}
+      className={className}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+const accolades = ["5+ Years", "10+ Clients", "3 Countries", "Forbes · Apple News · WebMD"];
 
 export default function AboutPage() {
   return (
     <>
       {/* Hero */}
-      <section className="bg-stone-50 py-20 md:py-28">
-        <div className="max-w-6xl mx-auto px-6">
-          <AnimatedSection>
-            <p className="text-violet-600 font-semibold text-sm uppercase tracking-widest mb-3">
-              About me
-            </p>
-            <h1 className="text-5xl md:text-6xl font-bold text-stone-900 mb-8 max-w-2xl">
-              Get to Know Me Better
-            </h1>
-          </AnimatedSection>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-            <AnimatedSection delay={0.1}>
-              <div className="space-y-5 text-stone-600 text-lg leading-relaxed">
-                <p>
-                  I am a UI/UX designer with 5+ years of experience across web design, Shopify,
-                  graphic design, and video editing. I started out in graphic design and worked my
-                  way into full UX, building a process that goes all the way from research and user
-                  flows through wireframing, prototyping, usability testing, and developer handoff.
-                </p>
-                <p>
-                  I have worked closely with CEOs, developers, marketing teams, and sales teams
-                  across a range of industries. For me, collaboration and communication are not just
-                  nice to have -- they are how good work actually gets made.
-                </p>
-                <p>
-                  I am also actively integrating AI into my workflow. From using AI tools for
-                  design generation and research to picking up terminal-based tools and light
-                  software development, I am always looking for ways to work smarter and deliver
-                  more.
-                </p>
-                <p>
-                  I do not compromise on quality. I go the extra mile because that is the standard
-                  I hold myself to, not because someone asked me to.
-                </p>
+      <section className="bg-[#0a0a0a] pt-16 pb-0 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6 md:px-10 pt-16 pb-16">
+          <motion.p
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-[#caff00] text-xs font-bold uppercase tracking-[0.2em] mb-6"
+          >
+            About
+          </motion.p>
+          <motion.h1
+            initial={{ opacity: 0, y: 32 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+            className="text-[11vw] md:text-[8vw] font-black uppercase leading-none tracking-[-0.04em] text-white mb-12"
+          >
+            Get to<br />know me.
+          </motion.h1>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.25 }}
+            className="grid grid-cols-2 md:grid-cols-4 gap-6 border-t border-[#1a1a1a] pt-10"
+          >
+            {accolades.map((a) => (
+              <div key={a}>
+                <p className="text-white font-black text-lg">{a}</p>
               </div>
-            </AnimatedSection>
+            ))}
+          </motion.div>
+        </div>
 
-            <AnimatedSection delay={0.2}>
-              <div className="bg-white rounded-2xl border border-stone-100 p-8 space-y-6">
-                <div>
-                  <p className="text-stone-400 text-xs uppercase tracking-widest mb-1">Role</p>
-                  <p className="font-semibold text-stone-900">UI/UX Designer</p>
-                </div>
-                <div>
-                  <p className="text-stone-400 text-xs uppercase tracking-widest mb-1">
-                    Experience
-                  </p>
-                  <p className="font-semibold text-stone-900">5+ Years</p>
-                </div>
-                <div>
-                  <p className="text-stone-400 text-xs uppercase tracking-widest mb-1">Location</p>
-                  <p className="font-semibold text-stone-900">Remote / Bangkok</p>
-                </div>
-                <div>
-                  <p className="text-stone-400 text-xs uppercase tracking-widest mb-1">Status</p>
-                  <span className="inline-flex items-center gap-1.5 bg-emerald-50 text-emerald-700 text-sm font-semibold px-3 py-1.5 rounded-full border border-emerald-200">
-                    <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                    Available for work
-                  </span>
-                </div>
-                <div>
-                  <p className="text-stone-400 text-xs uppercase tracking-widest mb-1">Email</p>
-                  <a
-                    href="mailto:keithpaul00@gmail.com"
-                    className="text-violet-600 hover:text-violet-700 font-medium transition-colors"
-                  >
-                    keithpaul00@gmail.com
-                  </a>
+        <div className="border-t border-[#1a1a1a] py-4">
+          <Marquee
+            items={["UI/UX Design", "Shopify", "Branding", "Video Editing", "AI Workflows", "Research", "Figma", "Framer", "Adobe Suite"]}
+            slow
+            className="text-xs font-bold uppercase tracking-widest text-[#2a2a2a]"
+          />
+        </div>
+      </section>
+
+      {/* Bio */}
+      <section className="bg-[#0e0e0e] border-t border-[#1a1a1a] py-20 md:py-28">
+        <div className="max-w-7xl mx-auto px-6 md:px-10">
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-16 items-start">
+            <ScrollReveal>
+              <div className="sticky top-24 space-y-4">
+                <div className="bg-[#111] border border-[#1e1e1e] rounded-2xl p-6 space-y-5">
+                  {[
+                    { label: "Role", value: "UI/UX Designer" },
+                    { label: "Experience", value: "5+ Years" },
+                    { label: "Location", value: "Remote / Bangkok" },
+                    { label: "Status", value: "Available", highlight: true },
+                  ].map((item) => (
+                    <div key={item.label}>
+                      <p className="text-[#444] text-[10px] uppercase tracking-widest mb-1">{item.label}</p>
+                      <p className={`font-bold text-sm ${item.highlight ? "text-[#caff00]" : "text-white"}`}>
+                        {item.value}
+                        {item.highlight && <span className="w-1.5 h-1.5 rounded-full bg-[#caff00] inline-block ml-2 blink" />}
+                      </p>
+                    </div>
+                  ))}
+                  <div className="pt-4 border-t border-[#1a1a1a]">
+                    <a
+                      href="mailto:keithpaul00@gmail.com"
+                      className="inline-flex items-center gap-2 text-[#caff00] font-bold text-xs uppercase tracking-widest hover:gap-4 transition-all"
+                    >
+                      Say hello
+                      <ArrowUpRight size={12} />
+                    </a>
+                  </div>
                 </div>
               </div>
-            </AnimatedSection>
+            </ScrollReveal>
+
+            <ScrollReveal delay={0.1} className="space-y-8">
+              {[
+                "I am a UI/UX designer with 5+ years of experience across web design, Shopify, graphic design, and video editing. I started out in graphic design and worked my way into full UX, building a process that goes all the way from research and user flows through wireframing, prototyping, usability testing, and developer handoff.",
+                "I have worked closely with CEOs, developers, marketing teams, and sales teams across a range of industries. For me, collaboration and communication are not just nice to have -- they are how good work actually gets made.",
+                "I am also actively integrating AI into my workflow. From using AI tools for design generation and research to picking up terminal-based tools and light software development, I am always looking for ways to work smarter and deliver more.",
+                "I do not compromise on quality. I go the extra mile because that is the standard I hold myself to, not because someone asked me to.",
+              ].map((para, i) => (
+                <p key={i} className="text-[#888] text-xl leading-relaxed">{para}</p>
+              ))}
+            </ScrollReveal>
           </div>
         </div>
       </section>
 
       {/* Experience */}
-      <section className="bg-white py-20 border-t border-stone-100">
-        <div className="max-w-6xl mx-auto px-6">
-          <AnimatedSection>
-            <p className="text-violet-600 font-semibold text-sm uppercase tracking-widest mb-2">
-              Work history
-            </p>
-            <h2 className="text-4xl md:text-5xl font-bold text-stone-900 mb-12">Experience</h2>
-          </AnimatedSection>
+      <section className="bg-[#0a0a0a] border-t border-[#1a1a1a] py-20 md:py-28">
+        <div className="max-w-7xl mx-auto px-6 md:px-10">
+          <ScrollReveal className="flex items-center gap-4 mb-16">
+            <span className="text-[#caff00] text-xs font-mono font-bold">01</span>
+            <div className="h-px flex-1 bg-[#1a1a1a]" />
+            <span className="text-[#444] text-xs uppercase tracking-widest">Experience</span>
+          </ScrollReveal>
 
-          <div className="space-y-8">
+          <div className="space-y-0">
             {experience.map((job, i) => (
-              <AnimatedSection key={`${job.company}-${i}`} delay={i * 0.1}>
-                <div className="flex gap-6 group">
-                  <div className="flex flex-col items-center">
-                    <div className="w-3 h-3 rounded-full bg-violet-600 mt-1.5 shrink-0" />
-                    {i < experience.length - 1 && (
-                      <div className="w-px flex-1 bg-stone-200 mt-2" />
-                    )}
+              <ScrollReveal key={`${job.company}-${i}`} delay={i * 0.07}>
+                <div className="border-b border-[#1a1a1a] py-10 grid grid-cols-1 md:grid-cols-[200px_1fr] gap-6 md:gap-12 group hover:bg-[#0e0e0e] px-0 md:px-2 transition-colors rounded-xl">
+                  <div>
+                    <span className="text-[#333] text-xs font-mono">{job.period}</span>
                   </div>
-                  <div className="pb-8 flex-1">
-                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 mb-3">
-                      <div>
-                        <h3 className="text-xl font-bold text-stone-900">{job.role}</h3>
-                        <p className="text-violet-600 font-semibold">{job.company}</p>
-                      </div>
-                      <span className="text-sm text-stone-400 font-medium bg-stone-100 px-3 py-1 rounded-full">
-                        {job.period}
-                      </span>
+                  <div>
+                    <div className="flex items-baseline gap-3 mb-4">
+                      <h3 className="text-2xl font-black text-white">{job.role}</h3>
+                      <span className="text-[#caff00] font-bold text-sm">@ {job.company}</span>
                     </div>
                     <ul className="space-y-2">
                       {job.bullets.map((b) => (
-                        <li key={b} className="flex items-start gap-2 text-stone-600 text-sm">
-                          <span className="w-1.5 h-1.5 rounded-full bg-stone-400 mt-1.5 shrink-0" />
+                        <li key={b} className="flex items-start gap-3 text-[#666] text-sm">
+                          <span className="text-[#333] mt-0.5 shrink-0">—</span>
                           {b}
                         </li>
                       ))}
                     </ul>
                   </div>
                 </div>
-              </AnimatedSection>
+              </ScrollReveal>
             ))}
           </div>
         </div>
       </section>
 
       {/* Education */}
-      <section className="bg-stone-50 py-20 border-t border-stone-100">
-        <div className="max-w-6xl mx-auto px-6">
-          <AnimatedSection>
-            <p className="text-violet-600 font-semibold text-sm uppercase tracking-widest mb-2">
-              Background
-            </p>
-            <h2 className="text-4xl md:text-5xl font-bold text-stone-900 mb-10">Education</h2>
-          </AnimatedSection>
+      <section className="bg-[#0e0e0e] border-t border-[#1a1a1a] py-20">
+        <div className="max-w-7xl mx-auto px-6 md:px-10">
+          <ScrollReveal className="flex items-center gap-4 mb-12">
+            <span className="text-[#caff00] text-xs font-mono font-bold">02</span>
+            <div className="h-px flex-1 bg-[#1a1a1a]" />
+            <span className="text-[#444] text-xs uppercase tracking-widest">Education</span>
+          </ScrollReveal>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             {education.map((e, i) => (
-              <AnimatedSection key={e.institution} delay={i * 0.1}>
-                <div className="bg-white rounded-2xl p-7 border border-stone-100">
-                  <span className="text-xs font-semibold text-violet-600 bg-violet-50 px-3 py-1 rounded-full">
-                    {e.year}
-                  </span>
-                  <h3 className="font-bold text-stone-900 mt-3 mb-1">{e.degree}</h3>
-                  <p className="text-stone-500 text-sm">{e.institution}</p>
+              <ScrollReveal key={e.institution} delay={i * 0.1}>
+                <div className="bg-[#111] border border-[#1e1e1e] rounded-2xl p-8 hover:border-[#2a2a2a] transition-colors">
+                  <span className="text-[#caff00] text-xs font-bold uppercase tracking-widest">{e.year}</span>
+                  <h3 className="text-white font-black text-lg mt-3 mb-1">{e.degree}</h3>
+                  <p className="text-[#555] text-sm">{e.institution}</p>
                 </div>
-              </AnimatedSection>
+              </ScrollReveal>
             ))}
           </div>
         </div>
       </section>
 
       {/* Testimonials */}
-      <section id="testimonials" className="bg-white py-20 md:py-28 border-t border-stone-100">
-        <div className="max-w-6xl mx-auto px-6">
-          <AnimatedSection>
-            <div className="text-center mb-12">
-              <p className="text-violet-600 font-semibold text-sm uppercase tracking-widest mb-2">
-                Kind words
-              </p>
-              <h2 className="text-4xl md:text-5xl font-bold text-stone-900">What people say</h2>
-            </div>
-          </AnimatedSection>
+      <section id="testimonials" className="bg-[#0a0a0a] border-t border-[#1a1a1a] py-20 md:py-28">
+        <div className="max-w-7xl mx-auto px-6 md:px-10">
+          <ScrollReveal className="flex items-center gap-4 mb-16">
+            <span className="text-[#caff00] text-xs font-mono font-bold">03</span>
+            <div className="h-px flex-1 bg-[#1a1a1a]" />
+            <span className="text-[#444] text-xs uppercase tracking-widest">Testimonials</span>
+          </ScrollReveal>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             {testimonials.map((t, i) => (
-              <AnimatedSection key={t.name} delay={i * 0.08}>
-                <blockquote className="bg-stone-50 rounded-2xl p-8 border border-stone-100">
-                  <p className="text-4xl text-violet-300 font-serif leading-none mb-4">&ldquo;</p>
-                  <p className="text-stone-700 leading-relaxed mb-6">{t.quote}</p>
+              <ScrollReveal key={t.name} delay={i * 0.08}>
+                <blockquote className="bg-[#111] border border-[#1e1e1e] rounded-2xl p-8 h-full hover:border-[#2a2a2a] transition-colors">
+                  <span className="text-6xl font-black text-[#caff00] leading-none block mb-6">&ldquo;</span>
+                  <p className="text-[#999] text-base leading-relaxed mb-8">{t.quote}</p>
                   <footer className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-violet-500 to-cyan-500 flex items-center justify-center text-white text-sm font-bold shrink-0">
+                    <div className="w-9 h-9 rounded-full bg-gradient-to-br from-[#caff00] to-[#7C3AED] flex items-center justify-center text-[#0a0a0a] text-sm font-black shrink-0">
                       {t.name.charAt(0)}
                     </div>
                     <div>
-                      <p className="font-semibold text-stone-900 text-sm">{t.name}</p>
-                      <p className="text-stone-400 text-xs">
-                        {t.role}, {t.company}
-                      </p>
+                      <p className="text-white font-bold text-sm">{t.name}</p>
+                      <p className="text-[#555] text-xs">{t.role} — {t.company}</p>
                     </div>
                   </footer>
                 </blockquote>
-              </AnimatedSection>
+              </ScrollReveal>
             ))}
           </div>
         </div>

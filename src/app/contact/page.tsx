@@ -1,120 +1,99 @@
-import { Mail, MapPin, Clock } from "lucide-react";
-import LinkedInIcon from "@/components/LinkedInIcon";
-import AnimatedSection from "@/components/AnimatedSection";
-import type { Metadata } from "next";
+"use client";
 
-export const metadata: Metadata = {
-  title: "Contact — Keith Paul",
-  description: "Get in touch with Keith Paul. Available for UI/UX design projects. Remote / Bangkok.",
-};
+import { motion } from "framer-motion";
+import { ArrowUpRight, MapPin, Clock } from "lucide-react";
+import LinkedInIcon from "@/components/LinkedInIcon";
 
 export default function ContactPage() {
   return (
-    <section className="min-h-[80vh] bg-stone-50 flex items-center py-20 md:py-28">
-      <div className="max-w-6xl mx-auto px-6 w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          <div>
-            <AnimatedSection>
-              <p className="text-violet-600 font-semibold text-sm uppercase tracking-widest mb-3">
-                Get in touch
-              </p>
-              <h1 className="text-5xl md:text-6xl font-bold text-stone-900 mb-6">
-                Let&apos;s Talk
-              </h1>
-              <p className="text-stone-500 text-lg mb-10 leading-relaxed">
-                Whether you have a project in mind or just want to connect, I would love to hear
-                from you.
-              </p>
-            </AnimatedSection>
+    <section className="min-h-[100svh] bg-[#0a0a0a] flex flex-col justify-center py-20 overflow-hidden relative">
+      {/* Background text */}
+      <div className="absolute inset-0 flex items-center justify-center opacity-[0.03] pointer-events-none select-none overflow-hidden">
+        <span className="text-[25vw] font-black uppercase leading-none text-white whitespace-nowrap">
+          TALK
+        </span>
+      </div>
 
-            <AnimatedSection delay={0.1}>
-              <div className="space-y-4 mb-10">
-                <div className="flex items-center gap-3 text-stone-600 text-sm">
-                  <span className="w-8 h-8 rounded-full bg-violet-100 flex items-center justify-center">
-                    <MapPin size={14} className="text-violet-600" />
-                  </span>
-                  Remote / Bangkok
-                </div>
-                <div className="flex items-center gap-3 text-stone-600 text-sm">
-                  <span className="w-8 h-8 rounded-full bg-emerald-100 flex items-center justify-center">
-                    <Clock size={14} className="text-emerald-600" />
-                  </span>
-                  Available for new projects
-                </div>
-              </div>
-            </AnimatedSection>
+      <div className="relative max-w-7xl mx-auto px-6 md:px-10 w-full">
+        <motion.p
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-[#caff00] text-xs font-bold uppercase tracking-[0.2em] mb-6"
+        >
+          Contact
+        </motion.p>
 
-            <AnimatedSection delay={0.15}>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <a
-                  href="mailto:keithpaul00@gmail.com"
-                  className="inline-flex items-center gap-2 bg-violet-600 hover:bg-violet-700 text-white font-semibold px-7 py-4 rounded-full transition-colors"
-                >
-                  <Mail size={18} />
-                  Send an Email
-                </a>
-                <a
-                  href="https://www.linkedin.com/in/keith-paul-1450241a3/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 border-2 border-stone-300 text-stone-700 hover:border-stone-900 hover:text-stone-900 font-semibold px-7 py-4 rounded-full transition-colors"
-                >
-                  <LinkedInIcon size={18} />
-                  LinkedIn
-                </a>
-              </div>
-            </AnimatedSection>
+        <motion.h1
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+          className="text-[13vw] md:text-[10vw] font-black uppercase leading-none tracking-[-0.04em] mb-4"
+        >
+          <span className="text-white">Let&apos;s</span>
+          <br />
+          <span style={{ WebkitTextStroke: "2px #caff00", color: "transparent" }}>Talk.</span>
+        </motion.h1>
+
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.3 }}
+          className="text-[#555] text-lg max-w-md mb-16"
+        >
+          Whether you have a project in mind or just want to connect, I would love to hear from
+          you.
+        </motion.p>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.4 }}
+          className="flex flex-col sm:flex-row gap-4 mb-16"
+        >
+          <a
+            href="mailto:keithpaul00@gmail.com"
+            className="inline-flex items-center gap-3 bg-[#caff00] text-[#0a0a0a] font-black px-8 py-4 rounded-full uppercase tracking-wide text-sm hover:bg-white transition-colors"
+          >
+            keithpaul00@gmail.com
+            <ArrowUpRight size={16} />
+          </a>
+          <a
+            href="https://www.linkedin.com/in/keith-paul-1450241a3/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-3 border border-[#2a2a2a] text-white font-bold px-8 py-4 rounded-full uppercase tracking-wide text-sm hover:border-[#caff00] hover:text-[#caff00] transition-colors"
+          >
+            <LinkedInIcon size={16} />
+            LinkedIn
+          </a>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.5 }}
+          className="flex flex-col sm:flex-row gap-8 border-t border-[#1a1a1a] pt-12"
+        >
+          <div className="flex items-center gap-3 text-[#555] text-sm">
+            <span className="w-8 h-8 rounded-full bg-[#1a1a1a] flex items-center justify-center">
+              <MapPin size={13} className="text-[#caff00]" />
+            </span>
+            Remote / Bangkok
           </div>
-
-          <AnimatedSection delay={0.2}>
-            <div className="bg-white rounded-3xl border border-stone-100 p-10 shadow-sm">
-              <h2 className="text-2xl font-bold text-stone-900 mb-2">Reach out directly</h2>
-              <p className="text-stone-400 text-sm mb-8">
-                I typically respond within 24 hours.
-              </p>
-
-              <div className="space-y-4">
-                <a
-                  href="mailto:keithpaul00@gmail.com"
-                  className="flex items-center gap-4 p-4 rounded-2xl bg-violet-50 border border-violet-100 hover:bg-violet-100 transition-colors group"
-                >
-                  <div className="w-10 h-10 rounded-xl bg-violet-600 flex items-center justify-center shrink-0">
-                    <Mail size={18} className="text-white" />
-                  </div>
-                  <div>
-                    <p className="font-semibold text-stone-900 text-sm">Email</p>
-                    <p className="text-stone-500 text-sm">keithpaul00@gmail.com</p>
-                  </div>
-                </a>
-
-                <a
-                  href="https://www.linkedin.com/in/keith-paul-1450241a3/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-4 p-4 rounded-2xl bg-cyan-50 border border-cyan-100 hover:bg-cyan-100 transition-colors group"
-                >
-                  <div className="w-10 h-10 rounded-xl bg-cyan-500 flex items-center justify-center shrink-0">
-                    <LinkedInIcon size={18} />
-                  </div>
-                  <div>
-                    <p className="font-semibold text-stone-900 text-sm">LinkedIn</p>
-                    <p className="text-stone-500 text-sm">keith-paul-1450241a3</p>
-                  </div>
-                </a>
-              </div>
-
-              <div className="mt-8 pt-8 border-t border-stone-100">
-                <div className="flex items-center gap-2 mb-1">
-                  <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                  <span className="text-emerald-700 text-sm font-semibold">Available for work</span>
-                </div>
-                <p className="text-stone-400 text-xs">
-                  Open to full-time, contract, and freelance opportunities.
-                </p>
-              </div>
-            </div>
-          </AnimatedSection>
-        </div>
+          <div className="flex items-center gap-3 text-[#555] text-sm">
+            <span className="w-8 h-8 rounded-full bg-[#1a1a1a] flex items-center justify-center">
+              <Clock size={13} className="text-[#caff00]" />
+            </span>
+            Open to full-time, contract, and freelance
+          </div>
+          <div className="flex items-center gap-3 text-[#555] text-sm">
+            <span className="w-8 h-8 rounded-full bg-[#1a1a1a] flex items-center justify-center">
+              <span className="w-2 h-2 rounded-full bg-[#caff00] blink block" />
+            </span>
+            Typically responds within 24 hours
+          </div>
+        </motion.div>
       </div>
     </section>
   );
