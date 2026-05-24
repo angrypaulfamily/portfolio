@@ -3,6 +3,7 @@ export type Testimonial = {
   role: string;
   company: string;
   quote: string;
+  photo?: string;
 };
 
 export const testimonials: Testimonial[] = [
@@ -10,6 +11,7 @@ export const testimonials: Testimonial[] = [
     name: "Kevin Paul",
     role: "Team Member",
     company: "Pronto Marketing",
+    photo: "/images/about/team-kevin-paul.jpg",
     quote:
       "Keith's proficiency in UI/UX design was evident as he seamlessly transformed my vision into a visually stunning landing page. His creative direction for branding not only enhanced the aesthetic appeal but also effectively communicated the essence of my brand.",
   },
@@ -17,6 +19,7 @@ export const testimonials: Testimonial[] = [
     name: "Taanvi Shah",
     role: "Founder",
     company: "Dance Monkey Media",
+    photo: "/images/about/team-taanvi-shah.jpg",
     quote:
       "Creativity and dedication were evident in every project Keith and I worked on together. From crafting visually stunning reels to providing valuable insights for social media posts and branding direction.",
   },
@@ -24,6 +27,7 @@ export const testimonials: Testimonial[] = [
     name: "Amoree Dupasani",
     role: "Team Member",
     company: "ETSIPL",
+    photo: "/images/about/team-amoree-dupasani.jpg",
     quote:
       "Keith's ability to blend creativity with strategic thinking was impressive, resulting in visually stunning and effective marketing materials. His dedication, attention to detail, and collaborative spirit made him an invaluable asset to our team.",
   },
@@ -31,6 +35,7 @@ export const testimonials: Testimonial[] = [
     name: "Avijeet Singh",
     role: "Team Member",
     company: "PSX",
+    photo: "/images/about/team-avijeet-singh.jpg",
     quote:
       "Created visually striking social media posts, captivating Reels, and led compelling digital campaigns. Keith seamlessly blended his creative flair with a keen understanding of branding, offering valuable insights.",
   },

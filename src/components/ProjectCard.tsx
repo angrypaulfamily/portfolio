@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 import type { Project } from "@/data/projects";
 
@@ -22,29 +23,35 @@ export default function ProjectCard({
   return (
     <Link href={`/projects/${project.slug}`} className="group block">
       <article className="bg-[#111] border border-[#1e1e1e] rounded-2xl overflow-hidden hover:border-[#333] transition-all duration-300 hover:-translate-y-1">
-        {/* Color bar + number */}
-        <div
-          className="h-40 relative flex items-center justify-center overflow-hidden"
-          style={{ backgroundColor: `${color}15` }}
-        >
+        {/* Image or color art */}
+        <div className="relative h-48 overflow-hidden" style={{ backgroundColor: `${color}12` }}>
+          {project.heroImage ? (
+            <Image
+              src={project.heroImage}
+              alt={project.title}
+              fill
+              className="object-cover group-hover:scale-105 transition-transform duration-500"
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            />
+          ) : (
+            <div className="absolute inset-0 flex items-center justify-center">
+              <span
+                className="text-[80px] font-black uppercase leading-none tracking-tighter opacity-20 select-none"
+                style={{ color }}
+              >
+                {project.title.slice(0, 2).toUpperCase()}
+              </span>
+            </div>
+          )}
           {index !== undefined && (
             <span
-              className="absolute top-4 left-5 text-xs font-mono font-bold"
-              style={{ color: `${color}80` }}
+              className="absolute top-3 left-4 text-xs font-mono font-bold z-10"
+              style={{ color: `${color}cc`, textShadow: "0 1px 4px rgba(0,0,0,0.6)" }}
             >
               0{index + 1}
             </span>
           )}
-          <span
-            className="text-[80px] font-black uppercase leading-none tracking-tighter opacity-20 select-none"
-            style={{ color }}
-          >
-            {project.title.slice(0, 2).toUpperCase()}
-          </span>
-          <div
-            className="absolute bottom-0 left-0 right-0 h-0.5"
-            style={{ backgroundColor: color }}
-          />
+          <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-[#111] to-transparent" />
         </div>
 
         <div className="p-6">

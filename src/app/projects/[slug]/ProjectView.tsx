@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowLeft, ArrowUpRight, CheckCircle2 } from "lucide-react";
 import { motion } from "framer-motion";
 import ContactCTA from "@/components/ContactCTA";
@@ -16,15 +17,7 @@ const accentHex: Record<string, string> = {
   emerald: "#10B981",
 };
 
-function ScrollReveal({
-  children,
-  delay = 0,
-  className = "",
-}: {
-  children: React.ReactNode;
-  delay?: number;
-  className?: string;
-}) {
+function ScrollReveal({ children, delay = 0, className = "" }: { children: React.ReactNode; delay?: number; className?: string }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 24 }}
@@ -35,6 +28,32 @@ function ScrollReveal({
     >
       {children}
     </motion.div>
+  );
+}
+
+function VideoEmbed({ type, id, title }: { type: "vimeo" | "youtube"; id: string; title?: string }) {
+  const src =
+    type === "vimeo"
+      ? `https://player.vimeo.com/video/${id}?badge=0&autopause=0&player_id=0`
+      : `https://www.youtube.com/embed/${id}`;
+
+  return (
+    <div className="bg-[#111] border border-[#1e1e1e] rounded-2xl overflow-hidden">
+      <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
+        <iframe
+          src={src}
+          title={title ?? "Video"}
+          allow="autoplay; fullscreen; picture-in-picture"
+          allowFullScreen
+          className="absolute inset-0 w-full h-full"
+        />
+      </div>
+      {title && (
+        <div className="px-5 py-3 border-t border-[#1e1e1e]">
+          <p className="text-[#555] text-xs font-medium uppercase tracking-widest">{title}</p>
+        </div>
+      )}
+    </div>
   );
 }
 
@@ -58,8 +77,8 @@ export default function ProjectView({ project }: { project: Project }) {
       </div>
 
       {/* Hero */}
-      <section className="bg-[#0a0a0a] pt-12 pb-20 overflow-hidden">
-        <div className="max-w-7xl mx-auto px-6 md:px-10">
+      <section className="bg-[#0a0a0a] pt-12 pb-0 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6 md:px-10 pb-16">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -105,7 +124,7 @@ export default function ProjectView({ project }: { project: Project }) {
                 href={project.liveUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 font-bold text-xs uppercase tracking-widest px-5 py-2.5 rounded-full transition-colors"
+                className="inline-flex items-center gap-2 font-bold text-xs uppercase tracking-widest px-5 py-2.5 rounded-full"
                 style={{ backgroundColor: `${color}20`, color }}
               >
                 View Live Site
@@ -114,6 +133,27 @@ export default function ProjectView({ project }: { project: Project }) {
             </motion.div>
           )}
         </div>
+
+        {/* Hero image */}
+        {project.heroImage && (
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            className="max-w-7xl mx-auto px-6 md:px-10 pb-0"
+          >
+            <div className="relative w-full rounded-t-2xl overflow-hidden border border-b-0 border-[#1e1e1e]" style={{ aspectRatio: "16/8" }}>
+              <Image
+                src={project.heroImage}
+                alt={`${project.title} hero`}
+                fill
+                className="object-cover"
+                sizes="100vw"
+                priority
+              />
+            </div>
+          </motion.div>
+        )}
       </section>
 
       {/* Metrics */}
@@ -121,7 +161,7 @@ export default function ProjectView({ project }: { project: Project }) {
         <section className="bg-[#0e0e0e] border-y border-[#1a1a1a] py-16">
           <div className="max-w-7xl mx-auto px-6 md:px-10">
             <p className="text-[#333] text-xs uppercase tracking-widest mb-10">
-              Results — 3 months post-launch
+              Results -- 3 months post-launch
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-6 divide-y md:divide-y-0 md:divide-x divide-[#1a1a1a]">
               {project.metrics.map((m, i) => (
@@ -147,23 +187,84 @@ export default function ProjectView({ project }: { project: Project }) {
         </div>
       </section>
 
-      {/* Process */}
+      {/* Process sections with images */}
       {project.sections && (
         <section className="bg-[#0e0e0e] border-t border-[#1a1a1a] py-16 md:py-20">
-          <div className="max-w-3xl mx-auto px-6 md:px-10 space-y-14">
+          <div className="max-w-7xl mx-auto px-6 md:px-10 space-y-20">
             {project.sections.map((s, i) => (
               <ScrollReveal key={s.heading} delay={i * 0.05}>
-                <div className="flex gap-6">
-                  <span className="text-[#222] font-mono text-sm shrink-0 pt-1">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
+                <div className={`grid grid-cols-1 ${s.image ? "lg:grid-cols-2" : ""} gap-10 items-start`}>
                   <div>
-                    <h3 className="text-white font-black text-xl mb-3">{s.heading}</h3>
-                    <p className="text-[#777] leading-relaxed">{s.body}</p>
+                    <div className="flex gap-5 items-baseline mb-4">
+                      <span className="text-[#222] font-mono text-sm shrink-0">
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                      <h3 className="text-white font-black text-2xl">{s.heading}</h3>
+                    </div>
+                    <p className="text-[#777] leading-relaxed pl-9">{s.body}</p>
                   </div>
+                  {s.image && (
+                    <div className="relative rounded-2xl overflow-hidden border border-[#1e1e1e]" style={{ aspectRatio: "16/10" }}>
+                      <Image
+                        src={s.image}
+                        alt={s.heading}
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 1024px) 100vw, 50vw"
+                      />
+                    </div>
+                  )}
                 </div>
               </ScrollReveal>
             ))}
+          </div>
+        </section>
+      )}
+
+      {/* Videos */}
+      {project.videos && project.videos.length > 0 && (
+        <section className="bg-[#0a0a0a] border-t border-[#1a1a1a] py-16 md:py-20">
+          <div className="max-w-7xl mx-auto px-6 md:px-10">
+            <ScrollReveal className="flex items-center gap-4 mb-12">
+              <span className="text-xs font-bold uppercase tracking-widest" style={{ color }}>
+                Video Work
+              </span>
+              <div className="h-px flex-1 bg-[#1a1a1a]" />
+            </ScrollReveal>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+              {project.videos.map((v, i) => (
+                <ScrollReveal key={v.id} delay={i * 0.08}>
+                  <VideoEmbed type={v.type} id={v.id} title={v.title} />
+                </ScrollReveal>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Gallery */}
+      {project.galleryImages && project.galleryImages.length > 1 && !project.sections && (
+        <section className="bg-[#0e0e0e] border-t border-[#1a1a1a] py-16 md:py-20">
+          <div className="max-w-7xl mx-auto px-6 md:px-10">
+            <ScrollReveal className="flex items-center gap-4 mb-12">
+              <span className="text-xs font-bold uppercase tracking-widest" style={{ color }}>Gallery</span>
+              <div className="h-px flex-1 bg-[#1a1a1a]" />
+            </ScrollReveal>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {project.galleryImages.map((img, i) => (
+                <ScrollReveal key={img} delay={i * 0.07}>
+                  <div className="relative rounded-2xl overflow-hidden border border-[#1e1e1e]" style={{ aspectRatio: "4/3" }}>
+                    <Image
+                      src={img}
+                      alt={`${project.title} image ${i + 1}`}
+                      fill
+                      className="object-cover hover:scale-105 transition-transform duration-500"
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                    />
+                  </div>
+                </ScrollReveal>
+              ))}
+            </div>
           </div>
         </section>
       )}

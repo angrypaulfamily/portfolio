@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
@@ -8,15 +9,7 @@ import Marquee from "@/components/Marquee";
 import { experience, education } from "@/data/experience";
 import { testimonials } from "@/data/testimonials";
 
-function ScrollReveal({
-  children,
-  delay = 0,
-  className = "",
-}: {
-  children: React.ReactNode;
-  delay?: number;
-  className?: string;
-}) {
+function ScrollReveal({ children, delay = 0, className = "" }: { children: React.ReactNode; delay?: number; className?: string }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 32 }}
@@ -30,39 +23,69 @@ function ScrollReveal({
   );
 }
 
-const accolades = ["5+ Years", "10+ Clients", "3 Countries", "Forbes · Apple News · WebMD"];
+const accolades = [
+  { value: "5+", label: "Years experience" },
+  { value: "10+", label: "Clients" },
+  { value: "3", label: "Countries" },
+  { value: "Forbes", label: "Apple News, WebMD" },
+];
 
 export default function AboutPage() {
   return (
     <>
       {/* Hero */}
-      <section className="bg-[#0a0a0a] pt-16 pb-0 overflow-hidden">
+      <section className="bg-[#0a0a0a] pt-16 overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 md:px-10 pt-16 pb-16">
-          <motion.p
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-[#caff00] text-xs font-bold uppercase tracking-[0.2em] mb-6"
-          >
-            About
-          </motion.p>
-          <motion.h1
-            initial={{ opacity: 0, y: 32 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-            className="text-[11vw] md:text-[8vw] font-black uppercase leading-none tracking-[-0.04em] text-white mb-12"
-          >
-            Get to<br />know me.
-          </motion.h1>
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-12 items-end mb-16">
+            <div>
+              <motion.p
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                className="text-[#caff00] text-xs font-bold uppercase tracking-[0.2em] mb-6"
+              >
+                About
+              </motion.p>
+              <motion.h1
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+                className="text-[11vw] md:text-[7.5vw] font-black uppercase leading-none tracking-[-0.04em] text-white"
+              >
+                Get to<br />know me.
+              </motion.h1>
+            </div>
+
+            {/* Photo */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
+              className="hidden lg:block"
+            >
+              <div className="relative h-72 rounded-2xl overflow-hidden border border-[#1e1e1e]">
+                <Image
+                  src="/images/avatar.jpg"
+                  alt="Keith"
+                  fill
+                  className="object-cover"
+                  sizes="320px"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a]/30 to-transparent" />
+              </div>
+            </motion.div>
+          </div>
+
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.25 }}
+            transition={{ duration: 0.7, delay: 0.3 }}
             className="grid grid-cols-2 md:grid-cols-4 gap-6 border-t border-[#1a1a1a] pt-10"
           >
             {accolades.map((a) => (
-              <div key={a}>
-                <p className="text-white font-black text-lg">{a}</p>
+              <div key={a.label}>
+                <p className="text-white font-black text-xl">{a.value}</p>
+                <p className="text-[#444] text-xs uppercase tracking-widest mt-1">{a.label}</p>
               </div>
             ))}
           </motion.div>
@@ -72,7 +95,7 @@ export default function AboutPage() {
           <Marquee
             items={["UI/UX Design", "Shopify", "Branding", "Video Editing", "AI Workflows", "Research", "Figma", "Framer", "Adobe Suite"]}
             slow
-            className="text-xs font-bold uppercase tracking-widest text-[#2a2a2a]"
+            className="text-xs font-bold uppercase tracking-widest text-[#222]"
           />
         </div>
       </section>
@@ -80,9 +103,13 @@ export default function AboutPage() {
       {/* Bio */}
       <section className="bg-[#0e0e0e] border-t border-[#1a1a1a] py-20 md:py-28">
         <div className="max-w-7xl mx-auto px-6 md:px-10">
-          <div className="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-16 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-16 items-start">
             <ScrollReveal>
               <div className="sticky top-24 space-y-4">
+                {/* Mobile photo */}
+                <div className="lg:hidden relative h-48 rounded-2xl overflow-hidden border border-[#1e1e1e] mb-6">
+                  <Image src="/images/avatar.jpg" alt="Keith" fill className="object-cover" sizes="100vw" />
+                </div>
                 <div className="bg-[#111] border border-[#1e1e1e] rounded-2xl p-6 space-y-5">
                   {[
                     { label: "Role", value: "UI/UX Designer" },
@@ -114,7 +141,7 @@ export default function AboutPage() {
             <ScrollReveal delay={0.1} className="space-y-8">
               {[
                 "I am a UI/UX designer with 5+ years of experience across web design, Shopify, graphic design, and video editing. I started out in graphic design and worked my way into full UX, building a process that goes all the way from research and user flows through wireframing, prototyping, usability testing, and developer handoff.",
-                "I have worked closely with CEOs, developers, marketing teams, and sales teams across a range of industries. For me, collaboration and communication are not just nice to have -- they are how good work actually gets made.",
+                "I have worked closely with CEOs, developers, marketing teams, and sales teams across a range of industries. For me, collaboration and communication are not just nice to have: they are how good work actually gets made.",
                 "I am also actively integrating AI into my workflow. From using AI tools for design generation and research to picking up terminal-based tools and light software development, I am always looking for ways to work smarter and deliver more.",
                 "I do not compromise on quality. I go the extra mile because that is the standard I hold myself to, not because someone asked me to.",
               ].map((para, i) => (
@@ -134,22 +161,22 @@ export default function AboutPage() {
             <span className="text-[#444] text-xs uppercase tracking-widest">Experience</span>
           </ScrollReveal>
 
-          <div className="space-y-0">
+          <div>
             {experience.map((job, i) => (
               <ScrollReveal key={`${job.company}-${i}`} delay={i * 0.07}>
-                <div className="border-b border-[#1a1a1a] py-10 grid grid-cols-1 md:grid-cols-[200px_1fr] gap-6 md:gap-12 group hover:bg-[#0e0e0e] px-0 md:px-2 transition-colors rounded-xl">
+                <div className="border-b border-[#1a1a1a] py-10 grid grid-cols-1 md:grid-cols-[180px_1fr] gap-6 md:gap-12 hover:bg-[#0e0e0e] px-2 transition-colors rounded-xl">
                   <div>
                     <span className="text-[#333] text-xs font-mono">{job.period}</span>
                   </div>
                   <div>
                     <div className="flex items-baseline gap-3 mb-4">
                       <h3 className="text-2xl font-black text-white">{job.role}</h3>
-                      <span className="text-[#caff00] font-bold text-sm">@ {job.company}</span>
+                      <span className="text-[#caff00] font-bold text-sm">at {job.company}</span>
                     </div>
                     <ul className="space-y-2">
                       {job.bullets.map((b) => (
                         <li key={b} className="flex items-start gap-3 text-[#666] text-sm">
-                          <span className="text-[#333] mt-0.5 shrink-0">—</span>
+                          <span className="text-[#333] mt-0.5 shrink-0">--</span>
                           {b}
                         </li>
                       ))}
@@ -201,12 +228,18 @@ export default function AboutPage() {
                   <span className="text-6xl font-black text-[#caff00] leading-none block mb-6">&ldquo;</span>
                   <p className="text-[#999] text-base leading-relaxed mb-8">{t.quote}</p>
                   <footer className="flex items-center gap-3">
-                    <div className="w-9 h-9 rounded-full bg-gradient-to-br from-[#caff00] to-[#7C3AED] flex items-center justify-center text-[#0a0a0a] text-sm font-black shrink-0">
-                      {t.name.charAt(0)}
-                    </div>
+                    {t.photo ? (
+                      <div className="relative w-10 h-10 rounded-full overflow-hidden shrink-0 border border-[#2a2a2a]">
+                        <Image src={t.photo} alt={t.name} fill className="object-cover" sizes="40px" />
+                      </div>
+                    ) : (
+                      <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#caff00] to-[#7C3AED] flex items-center justify-center text-[#0a0a0a] text-sm font-black shrink-0">
+                        {t.name.charAt(0)}
+                      </div>
+                    )}
                     <div>
                       <p className="text-white font-bold text-sm">{t.name}</p>
-                      <p className="text-[#555] text-xs">{t.role} — {t.company}</p>
+                      <p className="text-[#555] text-xs">{t.role} at {t.company}</p>
                     </div>
                   </footer>
                 </blockquote>

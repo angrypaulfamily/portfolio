@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowDownRight, ArrowUpRight } from "lucide-react";
 import { motion } from "framer-motion";
 import Marquee from "@/components/Marquee";
@@ -30,18 +31,10 @@ const metrics = [
   { value: "+23%", label: "Session duration" },
 ];
 
-function FadeUp({
-  children,
-  delay = 0,
-  className = "",
-}: {
-  children: React.ReactNode;
-  delay?: number;
-  className?: string;
-}) {
+function FadeUp({ children, delay = 0, className = "" }: { children: React.ReactNode; delay?: number; className?: string }) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 32 }}
+      initial={{ opacity: 0, y: 28 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.7, delay, ease: [0.16, 1, 0.3, 1] }}
       className={className}
@@ -51,18 +44,10 @@ function FadeUp({
   );
 }
 
-function ScrollReveal({
-  children,
-  delay = 0,
-  className = "",
-}: {
-  children: React.ReactNode;
-  delay?: number;
-  className?: string;
-}) {
+function ScrollReveal({ children, delay = 0, className = "" }: { children: React.ReactNode; delay?: number; className?: string }) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 40 }}
+      initial={{ opacity: 0, y: 32 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-80px" }}
       transition={{ duration: 0.7, delay, ease: [0.16, 1, 0.3, 1] }}
@@ -76,78 +61,89 @@ function ScrollReveal({
 export default function Home() {
   return (
     <>
-      {/* ─── HERO ────────────────────────────────────────────────── */}
+      {/* HERO */}
       <section className="relative min-h-[100svh] flex flex-col justify-between bg-[#0a0a0a] overflow-hidden">
-        {/* Glow */}
-        <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full opacity-[0.07] blur-[120px] pointer-events-none"
+        <div
+          className="absolute top-0 right-0 w-[700px] h-[700px] rounded-full opacity-[0.06] blur-[140px] pointer-events-none"
           style={{ background: "radial-gradient(circle, #caff00, transparent 70%)" }}
         />
 
-        <div className="max-w-7xl mx-auto px-6 md:px-10 pt-16 pb-8 flex-1 flex flex-col justify-center">
-          <FadeUp delay={0.1}>
-            <div className="flex items-center gap-3 mb-8">
-              <span className="w-2 h-2 rounded-full bg-[#caff00] blink" />
-              <span className="text-[#caff00] text-xs font-bold uppercase tracking-[0.2em]">
-                Available for work
-              </span>
-              <span className="text-[#333] text-xs">·</span>
-              <span className="text-[#555] text-xs uppercase tracking-widest">Remote / Bangkok</span>
-            </div>
-          </FadeUp>
+        <div className="max-w-7xl mx-auto px-6 md:px-10 pt-20 pb-8 flex-1 flex flex-col justify-center">
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-12 items-end">
+            <div>
+              <FadeUp delay={0.1}>
+                <div className="flex items-center gap-3 mb-8">
+                  <span className="w-2 h-2 rounded-full bg-[#caff00] blink" />
+                  <span className="text-[#caff00] text-xs font-bold uppercase tracking-[0.2em]">
+                    Available for work
+                  </span>
+                  <span className="text-[#333]">·</span>
+                  <span className="text-[#555] text-xs uppercase tracking-widest">Remote / Bangkok</span>
+                </div>
+              </FadeUp>
 
-          <div className="overflow-hidden mb-2">
-            <FadeUp delay={0.2}>
-              <h1 className="text-[15vw] md:text-[13vw] font-black uppercase leading-none tracking-[-0.04em] text-white">
-                Keith
-              </h1>
-            </FadeUp>
-          </div>
-          <div className="overflow-hidden mb-8">
-            <FadeUp delay={0.3}>
-              <h1 className="text-[15vw] md:text-[13vw] font-black uppercase leading-none tracking-[-0.04em]"
-                style={{ WebkitTextStroke: "2px #caff00", color: "transparent" }}>
-                Paul.
-              </h1>
-            </FadeUp>
-          </div>
+              <div className="overflow-hidden mb-1">
+                <FadeUp delay={0.2}>
+                  <h1 className="text-[18vw] md:text-[15vw] font-black uppercase leading-none tracking-[-0.04em] text-white">
+                    Keith.
+                  </h1>
+                </FadeUp>
+              </div>
 
-          <FadeUp delay={0.4}>
-            <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
-              <div>
-                <p className="text-[#888] text-lg md:text-xl font-medium max-w-md leading-relaxed">
+              <FadeUp delay={0.35}>
+                <p className="text-[#888] text-lg md:text-xl font-medium max-w-md leading-relaxed mt-6">
                   UI/UX Designer with 5+ years of experience. I design with purpose and ship with
-                  quality — no shortcuts.
+                  quality. No shortcuts.
                 </p>
-              </div>
-              <div className="flex gap-4 shrink-0">
-                <Link
-                  href="/projects"
-                  className="inline-flex items-center gap-2 bg-[#caff00] text-[#0a0a0a] font-bold px-6 py-3.5 rounded-full text-sm uppercase tracking-wide hover:bg-white transition-colors"
-                >
-                  View Work
-                  <ArrowDownRight size={15} />
-                </Link>
-                <Link
-                  href="/contact"
-                  className="inline-flex items-center gap-2 border border-[#2a2a2a] text-white font-bold px-6 py-3.5 rounded-full text-sm uppercase tracking-wide hover:border-[#caff00] hover:text-[#caff00] transition-colors"
-                >
-                  Contact
-                </Link>
-              </div>
+              </FadeUp>
+
+              <FadeUp delay={0.45}>
+                <div className="flex flex-col sm:flex-row gap-4 mt-8">
+                  <Link
+                    href="/projects"
+                    className="inline-flex items-center gap-2 bg-[#caff00] text-[#0a0a0a] font-bold px-7 py-4 rounded-full text-sm uppercase tracking-wide hover:bg-white transition-colors"
+                  >
+                    View Work
+                    <ArrowDownRight size={15} />
+                  </Link>
+                  <Link
+                    href="/contact"
+                    className="inline-flex items-center gap-2 border border-[#2a2a2a] text-white font-bold px-7 py-4 rounded-full text-sm uppercase tracking-wide hover:border-[#caff00] hover:text-[#caff00] transition-colors"
+                  >
+                    Contact
+                  </Link>
+                </div>
+              </FadeUp>
             </div>
-          </FadeUp>
+
+            {/* Avatar */}
+            <FadeUp delay={0.3} className="hidden lg:block">
+              <div className="relative w-64 h-72">
+                <div className="absolute inset-0 rounded-3xl overflow-hidden border border-[#1e1e1e]">
+                  <Image
+                    src="/images/avatar.jpg"
+                    alt="Keith Paul"
+                    fill
+                    className="object-cover"
+                    sizes="256px"
+                    priority
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a]/40 to-transparent" />
+                </div>
+                <div className="absolute -bottom-3 -right-3 bg-[#caff00] text-[#0a0a0a] text-xs font-black uppercase tracking-widest px-4 py-2 rounded-full">
+                  UI/UX Designer
+                </div>
+              </div>
+            </FadeUp>
+          </div>
         </div>
 
-        {/* Marquee strip */}
         <div className="border-t border-[#1a1a1a] py-4">
-          <Marquee
-            items={skills}
-            className="text-xs font-bold uppercase tracking-widest text-[#444]"
-          />
+          <Marquee items={skills} className="text-xs font-bold uppercase tracking-widest text-[#444]" />
         </div>
       </section>
 
-      {/* ─── IMPACT NUMBERS ──────────────────────────────────────── */}
+      {/* METRICS */}
       <section className="bg-[#0e0e0e] border-y border-[#1a1a1a] py-20 md:py-28">
         <div className="max-w-7xl mx-auto px-6 md:px-10">
           <ScrollReveal className="flex items-center gap-4 mb-16">
@@ -162,12 +158,12 @@ export default function Home() {
                 <div className="flex items-end gap-2 mb-2">
                   {m.after ? (
                     <>
-                      <span className="text-5xl md:text-6xl font-black text-[#444] line-through">{m.value}</span>
-                      <ArrowUpRight size={28} className="text-[#caff00] mb-2" />
-                      <span className="text-5xl md:text-6xl font-black text-[#caff00]">{m.after}</span>
+                      <span className="text-4xl md:text-5xl font-black text-[#333] line-through">{m.value}</span>
+                      <ArrowUpRight size={24} className="text-[#caff00] mb-1.5" />
+                      <span className="text-4xl md:text-5xl font-black text-[#caff00]">{m.after}</span>
                     </>
                   ) : (
-                    <span className="text-5xl md:text-6xl font-black text-[#caff00]">{m.value}</span>
+                    <span className="text-4xl md:text-5xl font-black text-[#caff00]">{m.value}</span>
                   )}
                 </div>
                 <p className="text-[#555] text-sm font-medium uppercase tracking-widest">{m.label}</p>
@@ -175,15 +171,15 @@ export default function Home() {
             ))}
           </div>
 
-          <ScrollReveal delay={0.3} className="mt-12 pt-12 border-t border-[#1a1a1a]">
-            <p className="text-[#333] text-xs uppercase tracking-widest">
-              Results measured over 3 months — Royi Sal website redesign
+          <ScrollReveal delay={0.3} className="mt-10 pt-10 border-t border-[#1a1a1a]">
+            <p className="text-[#2a2a2a] text-xs uppercase tracking-widest">
+              Measured over 3 months post-launch — Royi Sal website redesign
             </p>
           </ScrollReveal>
         </div>
       </section>
 
-      {/* ─── MANIFESTO / ABOUT ───────────────────────────────────── */}
+      {/* ABOUT SNIPPET */}
       <section className="bg-[#0a0a0a] py-20 md:py-32 overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 md:px-10">
           <ScrollReveal className="flex items-center gap-4 mb-16">
@@ -194,22 +190,22 @@ export default function Home() {
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
             <ScrollReveal>
-              <h2 className="text-5xl md:text-6xl font-black leading-[1.05] text-white mb-0">
+              <h2 className="text-5xl md:text-6xl font-black leading-[1.05] text-white">
                 I don&apos;t{" "}
-                <span className="text-[#caff00]">compromise</span>
-                {" "}on quality.
+                <span className="text-[#caff00]">compromise</span>{" "}
+                on quality.
               </h2>
             </ScrollReveal>
 
             <ScrollReveal delay={0.1}>
-              <p className="text-[#888] text-lg leading-relaxed mb-8">
+              <p className="text-[#888] text-lg leading-relaxed mb-6">
                 I started out in graphic design and found my way into UI/UX naturally. I work
                 closely with CEOs, developers, marketing, and sales teams because communication is
-                what makes or breaks a project. I take designs from start to finish — research,
+                what makes or breaks a project. I take designs from start to finish: research,
                 wireframing, prototyping, testing, handoff.
               </p>
               <p className="text-[#888] text-lg leading-relaxed mb-10">
-                Lately I have been going deep into AI — using it actively in my design workflow and
+                Lately I have been going deep into AI, using it actively in my design workflow and
                 picking up terminal-based tools and light software development. In a field that is
                 evolving fast, staying ahead of what AI can do is just part of the job now.
               </p>
@@ -225,7 +221,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ─── PROJECTS ────────────────────────────────────────────── */}
+      {/* PROJECTS */}
       <section className="bg-[#0e0e0e] border-t border-[#1a1a1a] py-20 md:py-28">
         <div className="max-w-7xl mx-auto px-6 md:px-10">
           <ScrollReveal className="flex items-center gap-4 mb-16">
@@ -251,8 +247,8 @@ export default function Home() {
             </ScrollReveal>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {featured.map((project, i) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-5">
+            {featured.slice(0, 4).map((project, i) => (
               <ScrollReveal key={project.slug} delay={i * 0.1}>
                 <ProjectCard project={project} index={i} />
               </ScrollReveal>
@@ -270,7 +266,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ─── TESTIMONIALS ────────────────────────────────────────── */}
+      {/* TESTIMONIALS */}
       <section className="bg-[#0a0a0a] border-t border-[#1a1a1a] py-20 md:py-28">
         <div className="max-w-7xl mx-auto px-6 md:px-10">
           <ScrollReveal className="flex items-center gap-4 mb-16">
@@ -286,14 +282,18 @@ export default function Home() {
                   <span className="text-6xl font-black text-[#caff00] leading-none block mb-6">&ldquo;</span>
                   <p className="text-[#aaa] text-base leading-relaxed mb-8">{t.quote}</p>
                   <footer className="flex items-center gap-3">
-                    <div className="w-9 h-9 rounded-full bg-gradient-to-br from-[#caff00] to-[#7C3AED] flex items-center justify-center text-[#0a0a0a] text-sm font-black shrink-0">
-                      {t.name.charAt(0)}
-                    </div>
+                    {t.photo ? (
+                      <div className="relative w-10 h-10 rounded-full overflow-hidden shrink-0 border border-[#2a2a2a]">
+                        <Image src={t.photo} alt={t.name} fill className="object-cover" sizes="40px" />
+                      </div>
+                    ) : (
+                      <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#caff00] to-[#7C3AED] flex items-center justify-center text-[#0a0a0a] text-sm font-black shrink-0">
+                        {t.name.charAt(0)}
+                      </div>
+                    )}
                     <div>
                       <p className="text-white font-bold text-sm">{t.name}</p>
-                      <p className="text-[#555] text-xs">
-                        {t.role} — {t.company}
-                      </p>
+                      <p className="text-[#555] text-xs">{t.role} at {t.company}</p>
                     </div>
                   </footer>
                 </blockquote>

@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import ContactCTA from "@/components/ContactCTA";
 import { toolkit } from "@/data/toolkit";
@@ -11,15 +12,18 @@ const colorHex: Record<string, string> = {
   pink: "#EC4899",
 };
 
-function ScrollReveal({
-  children,
-  delay = 0,
-  className = "",
-}: {
-  children: React.ReactNode;
-  delay?: number;
-  className?: string;
-}) {
+const toolIcons: Record<string, string> = {
+  "Figma + Figma AI": "/images/toolkit/figma.svg",
+  "Framer": "/images/toolkit/framer.svg",
+  "Adobe Illustrator": "/images/toolkit/illustrator.svg",
+  "Adobe Photoshop": "/images/toolkit/photoshop.svg",
+  "Adobe After Effects": "/images/toolkit/after-effects.png",
+  "Adobe Premiere Pro": "/images/toolkit/premiere-pro.png",
+  "Notion": "/images/toolkit/notion.svg",
+  "Claude": "/images/toolkit/chatgpt.svg",
+};
+
+function ScrollReveal({ children, delay = 0, className = "" }: { children: React.ReactNode; delay?: number; className?: string }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 24 }}
@@ -78,10 +82,7 @@ export default function ToolkitPage() {
           >
             <div className="max-w-7xl mx-auto px-6 md:px-10">
               <ScrollReveal className="flex items-center gap-4 mb-12" delay={0.05}>
-                <span
-                  className="text-xs font-mono font-bold"
-                  style={{ color }}
-                >
+                <span className="text-xs font-mono font-bold" style={{ color }}>
                   0{catIndex + 1}
                 </span>
                 <div className="h-px flex-1 bg-[#1a1a1a]" />
@@ -91,25 +92,33 @@ export default function ToolkitPage() {
               </ScrollReveal>
 
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {category.tools.map((tool, i) => (
-                  <ScrollReveal key={tool.name} delay={catIndex * 0.04 + i * 0.06}>
-                    <div
-                      className="bg-[#111] border border-[#1a1a1a] rounded-2xl p-6 hover:border-[#2a2a2a] transition-all group"
-                    >
-                      <div className="flex items-start justify-between gap-3 mb-1">
-                        <h3 className="text-white font-black text-base">{tool.name}</h3>
-                        <span
-                          className="w-2 h-2 rounded-full shrink-0 mt-1.5"
-                          style={{ backgroundColor: color }}
-                        />
+                {category.tools.map((tool, i) => {
+                  const iconSrc = toolIcons[tool.name];
+                  return (
+                    <ScrollReveal key={tool.name} delay={catIndex * 0.04 + i * 0.06}>
+                      <div className="bg-[#111] border border-[#1a1a1a] rounded-2xl p-6 hover:border-[#2a2a2a] transition-all">
+                        <div className="flex items-center gap-3 mb-4">
+                          {iconSrc && (
+                            <div className="relative w-8 h-8 shrink-0">
+                              <Image
+                                src={iconSrc}
+                                alt={tool.name}
+                                fill
+                                className="object-contain"
+                                sizes="32px"
+                              />
+                            </div>
+                          )}
+                          <h3 className="text-white font-black text-base">{tool.name}</h3>
+                        </div>
+                        <p className="text-xs uppercase tracking-widest mb-3" style={{ color, opacity: 0.7 }}>
+                          {tool.subtitle}
+                        </p>
+                        <p className="text-[#666] text-sm leading-relaxed">{tool.description}</p>
                       </div>
-                      <p className="text-xs uppercase tracking-widest mb-4" style={{ color, opacity: 0.7 }}>
-                        {tool.subtitle}
-                      </p>
-                      <p className="text-[#666] text-sm leading-relaxed">{tool.description}</p>
-                    </div>
-                  </ScrollReveal>
-                ))}
+                    </ScrollReveal>
+                  );
+                })}
               </div>
             </div>
           </section>
