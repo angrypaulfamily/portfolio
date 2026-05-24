@@ -13,7 +13,11 @@
 @layer base {
   html {
     scroll-behavior: smooth;
-    cursor: none;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    html { cursor: none; }
+    * { cursor: none !important; }
   }
 
   body {
@@ -22,10 +26,6 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
-  }
-
-  * {
-    cursor: none !important;
   }
 
   ::selection {

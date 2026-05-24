@@ -1,11 +1,13 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowLeft, ArrowUpRight, CheckCircle2 } from "lucide-react";
 import { motion } from "framer-motion";
 import ContactCTA from "@/components/ContactCTA";
 import ProjectCard from "@/components/ProjectCard";
+import Lightbox from "@/components/Lightbox";
 import type { Project } from "@/data/projects";
 import { projects } from "@/data/projects";
 
@@ -60,6 +62,9 @@ function VideoEmbed({ type, id, title }: { type: "vimeo" | "youtube"; id: string
 export default function ProjectView({ project }: { project: Project }) {
   const color = accentHex[project.accent] ?? "#7C3AED";
   const related = projects.filter((p) => p.slug !== project.slug).slice(0, 2);
+  const [lightbox, setLightbox] = useState<{ images: string[]; index: number } | null>(null);
+  const openLightbox = (images: string[], index: number) => setLightbox({ images, index });
+  const closeLightbox = () => setLightbox(null);
 
   return (
     <>
@@ -142,16 +147,21 @@ export default function ProjectView({ project }: { project: Project }) {
             transition={{ duration: 0.9, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
             className="max-w-7xl mx-auto px-6 md:px-10 pb-0"
           >
-            <div className="relative w-full rounded-t-2xl overflow-hidden border border-b-0 border-[#1e1e1e]" style={{ aspectRatio: "16/8" }}>
-              <Image
-                src={project.heroImage}
-                alt={`${project.title} hero`}
-                fill
-                className="object-cover"
-                sizes="100vw"
-                priority
-              />
-            </div>
+            <button
+              onClick={() => openLightbox([project.heroImage!], 0)}
+              className="block w-full text-left"
+            >
+              <div className="relative w-full rounded-t-2xl overflow-hidden border border-b-0 border-[#1e1e1e]" style={{ aspectRatio: "16/8" }}>
+                <Image
+                  src={project.heroImage}
+                  alt={`${project.title} hero`}
+                  fill
+                  className="object-cover"
+                  sizes="100vw"
+                  priority
+                />
+              </div>
+            </button>
           </motion.div>
         )}
       </section>
@@ -204,15 +214,20 @@ export default function ProjectView({ project }: { project: Project }) {
                     <p className="text-[#777] leading-relaxed pl-9">{s.body}</p>
                   </div>
                   {s.image && (
-                    <div className="relative rounded-2xl overflow-hidden border border-[#1e1e1e]" style={{ aspectRatio: "16/10" }}>
-                      <Image
-                        src={s.image}
-                        alt={s.heading}
-                        fill
-                        className="object-cover"
-                        sizes="(max-width: 1024px) 100vw, 50vw"
-                      />
-                    </div>
+                    <button
+                      onClick={() => openLightbox([s.image!], 0)}
+                      className="block w-full text-left"
+                    >
+                      <div className="relative rounded-2xl overflow-hidden border border-[#1e1e1e] bg-[#0a0a0a]" style={{ aspectRatio: "16/10" }}>
+                        <Image
+                          src={s.image}
+                          alt={s.heading}
+                          fill
+                          className="object-contain"
+                          sizes="(max-width: 1024px) 100vw, 50vw"
+                        />
+                      </div>
+                    </button>
                   )}
                 </div>
               </ScrollReveal>
@@ -253,15 +268,20 @@ export default function ProjectView({ project }: { project: Project }) {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {project.galleryImages.map((img, i) => (
                 <ScrollReveal key={img} delay={i * 0.07}>
-                  <div className="relative rounded-2xl overflow-hidden border border-[#1e1e1e]" style={{ aspectRatio: "4/3" }}>
-                    <Image
-                      src={img}
-                      alt={`${project.title} image ${i + 1}`}
-                      fill
-                      className="object-cover hover:scale-105 transition-transform duration-500"
-                      sizes="(max-width: 768px) 100vw, 50vw"
-                    />
-                  </div>
+                  <button
+                    onClick={() => openLightbox(project.galleryImages!, i)}
+                    className="block w-full text-left"
+                  >
+                    <div className="relative rounded-2xl overflow-hidden border border-[#1e1e1e]" style={{ aspectRatio: "4/3" }}>
+                      <Image
+                        src={img}
+                        alt={`${project.title} image ${i + 1}`}
+                        fill
+                        className="object-cover hover:scale-105 transition-transform duration-500"
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                      />
+                    </div>
+                  </button>
                 </ScrollReveal>
               ))}
             </div>
@@ -308,6 +328,16 @@ export default function ProjectView({ project }: { project: Project }) {
       </section>
 
       <ContactCTA />
+
+      {lightbox && (
+        <Lightbox
+          images={lightbox.images}
+          currentIndex={lightbox.index}
+          onClose={closeLightbox}
+          onPrev={() => setLightbox(lb => lb && lb.index > 0 ? { ...lb, index: lb.index - 1 } : lb)}
+          onNext={() => setLightbox(lb => lb && lb.index < lb.images.length - 1 ? { ...lb, index: lb.index + 1 } : lb)}
+        />
+      )}
     </>
   );
 }

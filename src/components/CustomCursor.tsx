@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 
 export default function CustomCursor() {
+  const [isTouch, setIsTouch] = useState(true); // assume touch until proven otherwise
   const [hovering, setHovering] = useState(false);
   const [visible, setVisible] = useState(false);
   const rafRef = useRef<number>(0);
@@ -17,6 +18,11 @@ export default function CustomCursor() {
   const ringY = useSpring(dotY, { stiffness: 800, damping: 60, mass: 0.4 });
 
   useEffect(() => {
+    const mq = window.matchMedia('(hover: hover) and (pointer: fine)');
+    setIsTouch(!mq.matches);
+
+    if (!mq.matches) return;
+
     const move = (e: MouseEvent) => {
       rafRef.current = requestAnimationFrame(() => {
         dotX.set(e.clientX);
@@ -46,6 +52,8 @@ export default function CustomCursor() {
       document.documentElement.removeEventListener("mouseenter", onEnter);
     };
   }, [dotX, dotY, visible]);
+
+  if (isTouch) return null;
 
   return (
     <>

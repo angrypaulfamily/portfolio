@@ -8,7 +8,6 @@ import Marquee from "@/components/Marquee";
 import ProjectCard from "@/components/ProjectCard";
 import ContactCTA from "@/components/ContactCTA";
 import { projects } from "@/data/projects";
-import { testimonials } from "@/data/testimonials";
 
 const skills = [
   "User Research",
@@ -263,43 +262,6 @@ export default function Home() {
               All projects <ArrowUpRight size={14} />
             </Link>
           </ScrollReveal>
-        </div>
-      </section>
-
-      {/* TESTIMONIALS */}
-      <section className="bg-[#0a0a0a] border-t border-[#1a1a1a] py-20 md:py-28">
-        <div className="max-w-7xl mx-auto px-6 md:px-10">
-          <ScrollReveal className="flex items-center gap-4 mb-16">
-            <span className="text-[#caff00] text-xs font-mono font-bold">04</span>
-            <div className="h-px flex-1 bg-[#1a1a1a]" />
-            <span className="text-[#444] text-xs uppercase tracking-widest">Testimonials</span>
-          </ScrollReveal>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-            {testimonials.slice(0, 2).map((t, i) => (
-              <ScrollReveal key={t.name} delay={i * 0.1}>
-                <blockquote className="bg-[#111] border border-[#1e1e1e] rounded-2xl p-8 h-full">
-                  <span className="text-6xl font-black text-[#caff00] leading-none block mb-6">&ldquo;</span>
-                  <p className="text-[#aaa] text-base leading-relaxed mb-8">{t.quote}</p>
-                  <footer className="flex items-center gap-3">
-                    {t.photo ? (
-                      <div className="relative w-10 h-10 rounded-full overflow-hidden shrink-0 border border-[#2a2a2a]">
-                        <Image src={t.photo} alt={t.name} fill className="object-cover" sizes="40px" />
-                      </div>
-                    ) : (
-                      <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#caff00] to-[#7C3AED] flex items-center justify-center text-[#0a0a0a] text-sm font-black shrink-0">
-                        {t.name.charAt(0)}
-                      </div>
-                    )}
-                    <div>
-                      <p className="text-white font-bold text-sm">{t.name}</p>
-                      <p className="text-[#555] text-xs">{t.role} at {t.company}</p>
-                    </div>
-                  </footer>
-                </blockquote>
-              </ScrollReveal>
-            ))}
-          </div>
         </div>
       </section>
 
