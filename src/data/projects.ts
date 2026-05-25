@@ -108,6 +108,24 @@ export const projects: Project[] = [
     accent: "cyan",
     featured: true,
     heroImage: "/images/projects/luags-gallery/hero.png",
+    sections: [
+      {
+        heading: "Introducing an Unknown Gemstone",
+        body: "LuAG (Lutetium Aluminum Garnet) had never been sold as jewelry before. The design challenge was not just building a store but making a completely unfamiliar material feel desirable and trustworthy. Every element had to do double duty: sell the stone while explaining what it is.",
+      },
+      {
+        heading: "Luxury Identity from Scratch",
+        body: "Built the full brand identity from zero. The color system pairs deep blacks with cool metallic accents to reflect the stone's optical properties. Typography was chosen to sit at the intersection of scientific precision and high-end jewelry retail. The logo mark abstracts the gem's crystalline structure into a minimal, ownable shape.",
+      },
+      {
+        heading: "Shopify Architecture",
+        body: "Designed and built the full Shopify experience with a conversion-first mindset. Product pages lead with the stone's story before the purchase decision, reducing hesitation for a material most visitors have never heard of. Collection structure, filtering, and checkout flow were all mapped to minimize drop-off at each step.",
+      },
+      {
+        heading: "Mobile as the Primary Surface",
+        body: "The majority of luxury jewelry browsing happens on mobile. Every layout decision was validated on a phone first. Images scale to fill the screen, product detail accordions are thumb-friendly, and the add-to-cart flow collapses to a single persistent action at the bottom of the page.",
+      },
+    ],
     deliverables: [
       "Logo, color system, and typography for a modern luxury identity",
       "Full UI/UX design and Shopify build",
@@ -126,6 +144,24 @@ export const projects: Project[] = [
     accent: "orange",
     featured: true,
     heroImage: "/images/projects/heyoka-gallery/hero.png",
+    sections: [
+      {
+        heading: "Art First, Commerce Second",
+        body: "Heyoka Merrifield spent decades creating sacred art rooted in Native American tradition. The brief was to bring that body of work online without flattening it into a product catalogue. The site had to feel like a gallery you could also buy from — not a store that happened to have art in it.",
+      },
+      {
+        heading: "A Brand That Honors the Work",
+        body: "The visual identity draws from the earthy, warm tones running through Heyoka's paintings. Serif typography with generous spacing gives the text the same weight as the imagery. The logo direction was restrained intentionally: the art is the hero, and the brand exists to frame it, not compete with it.",
+      },
+      {
+        heading: "Exhibition-Style Browsing",
+        body: "Product pages were designed to read like gallery wall labels — the artwork's story, its context, and its materials described before the price. Collections are organized by theme and medium, letting visitors move through the work the way they would move through a physical show.",
+      },
+      {
+        heading: "Storytelling That Converts",
+        body: "The artist's journey is woven through the site rather than buried on an About page. Visitors encounter Heyoka's background and philosophy at the moments when trust matters most — just before they decide whether to buy. The result is a checkout flow that feels earned rather than pushed.",
+      },
+    ],
     deliverables: [
       "Typography, color system, and logo direction honoring the artist's legacy",
       "Full UI/UX design and Shopify build",

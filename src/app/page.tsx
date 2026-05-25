@@ -91,8 +91,8 @@ export default function Home() {
 
               <FadeUp delay={0.35}>
                 <p className="text-[#888] text-lg md:text-xl font-medium max-w-md leading-relaxed mt-6">
-                  UI/UX Designer with 5+ years of experience. I design with purpose and ship with
-                  quality. No shortcuts.
+                  UI/UX Designer with 5+ years of experience. I design with purpose, build with AI,
+                  and ship with quality. No shortcuts.
                 </p>
               </FadeUp>
 
