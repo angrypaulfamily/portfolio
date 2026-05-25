@@ -28,6 +28,7 @@ const toolIcons: Record<string, string> = {
   "Cursor": "/images/toolkit/cursor.svg",
   "Claude": "/images/toolkit/claude.svg",
   "Claude Code": "/images/toolkit/claude-code.svg",
+  "Open Code": "/images/toolkit/opencode.svg",
   "OpenAI Codex": "/images/toolkit/codex.svg",
   "ChatGPT": "/images/toolkit/chatgpt.svg",
 };

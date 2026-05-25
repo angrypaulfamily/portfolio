@@ -124,6 +124,12 @@ export const toolkit: ToolCategory[] = [
           "Anthropic's agentic coding tool that lives in the terminal. I use Claude Code to build and iterate on projects at a pace that would not be possible manually. This entire portfolio was built with Claude Code.",
       },
       {
+        name: "Open Code",
+        subtitle: "Open-Source Terminal AI Coder",
+        description:
+          "An open-source, terminal-based AI coding assistant that works across multiple AI providers. Great for when I want a flexible, model-agnostic coding workflow without being locked into one ecosystem.",
+      },
+      {
         name: "OpenAI Codex",
         subtitle: "Code Generation and Completion",
         description:
