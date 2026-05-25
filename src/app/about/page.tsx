@@ -94,7 +94,7 @@ export default function AboutPage() {
           <Marquee
             items={["UI/UX Design", "Shopify", "Branding", "Video Editing", "AI Workflows", "Research", "Figma", "Framer", "Adobe Suite"]}
             slow
-            className="text-xs font-bold uppercase tracking-widest text-[#222]"
+            className="text-xs font-bold uppercase tracking-widest text-[#444]"
           />
         </div>
       </section>

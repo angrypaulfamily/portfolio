@@ -147,7 +147,7 @@ export const projects: Project[] = [
     sections: [
       {
         heading: "Art First, Commerce Second",
-        body: "Heyoka Merrifield spent decades creating sacred art rooted in Native American tradition. The brief was to bring that body of work online without flattening it into a product catalogue. The site had to feel like a gallery you could also buy from — not a store that happened to have art in it.",
+        body: "Heyoka Merrifield spent decades creating sacred art rooted in Native American tradition. The brief was to bring that body of work online without flattening it into a product catalogue. The site had to feel like a gallery you could also buy from, not a store that happened to have art in it.",
       },
       {
         heading: "A Brand That Honors the Work",
@@ -155,11 +155,11 @@ export const projects: Project[] = [
       },
       {
         heading: "Exhibition-Style Browsing",
-        body: "Product pages were designed to read like gallery wall labels — the artwork's story, its context, and its materials described before the price. Collections are organized by theme and medium, letting visitors move through the work the way they would move through a physical show.",
+        body: "Product pages were designed to read like gallery wall labels: the artwork's story, its context, and its materials described before the price. Collections are organized by theme and medium, letting visitors move through the work the way they would move through a physical show.",
       },
       {
         heading: "Storytelling That Converts",
-        body: "The artist's journey is woven through the site rather than buried on an About page. Visitors encounter Heyoka's background and philosophy at the moments when trust matters most — just before they decide whether to buy. The result is a checkout flow that feels earned rather than pushed.",
+        body: "The artist's journey is woven through the site rather than buried on an About page. Visitors encounter Heyoka's background and philosophy at the moments when trust matters most, just before they decide whether to buy. The result is a checkout flow that feels earned rather than pushed.",
       },
     ],
     deliverables: [

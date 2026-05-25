@@ -172,7 +172,7 @@ export default function Home() {
 
           <ScrollReveal delay={0.3} className="mt-10 pt-10 border-t border-[#1a1a1a]">
             <p className="text-[#2a2a2a] text-xs uppercase tracking-widest">
-              Measured over 3 months post-launch — Royi Sal website redesign
+              Measured over 3 months post-launch, Royi Sal website redesign
             </p>
           </ScrollReveal>
         </div>

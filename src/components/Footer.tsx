@@ -21,7 +21,7 @@ export default function Footer() {
         <Marquee
           items={skills}
           slow
-          className="text-xs font-semibold uppercase tracking-widest text-[#333]"
+          className="text-xs font-semibold uppercase tracking-widest text-[#444]"
         />
       </div>
 
@@ -29,7 +29,7 @@ export default function Footer() {
         <div className="flex items-center gap-2">
           <span className="text-white font-black text-lg">KP</span>
           <span className="w-1.5 h-1.5 rounded-full bg-[#caff00] blink" />
-          <span className="text-[#444] text-sm ml-2">Remote / Bangkok · 2025</span>
+          <span className="text-[#444] text-sm ml-2">Remote / Bangkok · 2026</span>
         </div>
 
         <nav className="flex flex-wrap gap-6">
@@ -47,7 +47,7 @@ export default function Footer() {
           })}
         </nav>
 
-        <p className="text-[#333] text-xs">&copy; 2025 Keith Paul. All rights reserved.</p>
+        <p className="text-[#444] text-xs">&copy; 2026 Keith Paul. All rights reserved.</p>
       </div>
     </footer>
   );

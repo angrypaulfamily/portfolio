@@ -58,7 +58,7 @@ export default function ProjectsPage() {
             transition={{ duration: 0.7, delay: 0.25 }}
             className="text-[#555] text-lg max-w-xl"
           >
-            UI/UX design, Shopify, branding, and ad design — from research to production.
+            UI/UX design, Shopify, branding, and ad design. From research to production.
           </motion.p>
         </div>
       </section>
