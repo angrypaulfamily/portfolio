@@ -3,6 +3,7 @@ export type Experience = {
   company: string;
   period: string;
   bullets: string[];
+  projectSlug?: string;
 };
 
 export type Education = {
@@ -15,7 +16,8 @@ export const experience: Experience[] = [
   {
     role: "UI/UX Designer",
     company: "Royi Sal",
-    period: "2024 to Present",
+    period: "2024 to 2026",
+    projectSlug: "royi-sal",
     bullets: [
       "Led full redesign from research and competitor benchmarking through information architecture, wireframing, prototyping, and developer handoff",
       "Improved conversion rate from 3.6% to 13.8%",
@@ -28,6 +30,7 @@ export const experience: Experience[] = [
     role: "Graphic Designer",
     company: "Media.net",
     period: "2022 to 2024",
+    projectSlug: "media-net",
     bullets: [
       "Enhanced ad performance for major publishers including Forbes, Apple News, WebMD, and Wikihow",
       "Designed landing pages, logos, icons, and digital assets",
@@ -39,6 +42,7 @@ export const experience: Experience[] = [
     role: "Creative Designer",
     company: "ETSIPL",
     period: "2021 to 2022",
+    projectSlug: "graphic-design",
     bullets: [
       "Designed marketing materials combining creativity with strategic thinking",
       "Contributed to visual storytelling and brand identity work",
@@ -48,6 +52,7 @@ export const experience: Experience[] = [
     role: "Social Media Designer",
     company: "Pizza Stock Exchange",
     period: "2021",
+    projectSlug: "graphic-design",
     bullets: [
       "Created social media content including posts, stories, and reels for Instagram, Facebook, and LinkedIn",
       "Contributed to brand identity through logos and website banners",

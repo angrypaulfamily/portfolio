@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, ExternalLink } from "lucide-react";
 import ContactCTA from "@/components/ContactCTA";
 import Marquee from "@/components/Marquee";
 import { experience, education } from "@/data/experience";
@@ -161,16 +161,20 @@ export default function AboutPage() {
           </ScrollReveal>
 
           <div>
-            {experience.map((job, i) => (
-              <ScrollReveal key={`${job.company}-${i}`} delay={i * 0.07}>
-                <div className="border-b border-[#1a1a1a] py-10 grid grid-cols-1 md:grid-cols-[180px_1fr] gap-6 md:gap-12 hover:bg-[#0e0e0e] px-2 transition-colors rounded-xl">
+            {experience.map((job, i) => {
+              const rowClass = "group border-b border-[#1a1a1a] py-10 grid grid-cols-1 md:grid-cols-[180px_1fr] gap-6 md:gap-12 hover:bg-[#0e0e0e] px-2 transition-colors rounded-xl";
+              const inner = (
+                <>
                   <div>
-                    <span className="text-[#333] text-xs font-mono">{job.period}</span>
+                    <span className="text-[#555] text-xs font-mono">{job.period}</span>
                   </div>
                   <div>
-                    <div className="flex items-baseline gap-3 mb-4">
+                    <div className="flex items-center gap-3 mb-4">
                       <h3 className="text-2xl font-black text-white">{job.role}</h3>
                       <span className="text-[#caff00] font-bold text-sm">at {job.company}</span>
+                      {job.projectSlug && (
+                        <ExternalLink size={13} className="text-[#333] group-hover:text-[#caff00] transition-colors ml-auto shrink-0" />
+                      )}
                     </div>
                     <ul className="space-y-2">
                       {job.bullets.map((b) => (
@@ -181,9 +185,20 @@ export default function AboutPage() {
                       ))}
                     </ul>
                   </div>
-                </div>
-              </ScrollReveal>
-            ))}
+                </>
+              );
+              return (
+                <ScrollReveal key={`${job.company}-${i}`} delay={i * 0.07}>
+                  {job.projectSlug ? (
+                    <Link href={`/projects/${job.projectSlug}`} className={rowClass}>
+                      {inner}
+                    </Link>
+                  ) : (
+                    <div className={rowClass}>{inner}</div>
+                  )}
+                </ScrollReveal>
+              );
+            })}
           </div>
         </div>
       </section>
