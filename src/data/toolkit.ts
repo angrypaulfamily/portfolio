@@ -51,12 +51,6 @@ export const toolkit: ToolCategory[] = [
         description:
           "Where I bring video content together. From brand films to social media reels, Premiere Pro is where the final edit happens.",
       },
-      {
-        name: "Notion",
-        subtitle: "Project Management",
-        description:
-          "Keeps everything organized across projects. Design notes, timelines, documentation, and client communication all live here.",
-      },
     ],
   },
   {
@@ -119,9 +113,27 @@ export const toolkit: ToolCategory[] = [
     tools: [
       {
         name: "Claude",
-        subtitle: "Design Thinking, Writing, and Code",
+        subtitle: "Design Thinking, Writing, and Research",
         description:
-          "My primary AI assistant. I use Claude for design research, writing UX copy, generating and reviewing code, and thinking through problems before I start designing. It is the tool I reach for most.",
+          "My primary AI assistant. I use Claude for design research, writing UX copy, thinking through problems before I start designing, and reviewing work mid-process. It is the tool I reach for most across the entire design workflow.",
+      },
+      {
+        name: "Claude Code",
+        subtitle: "AI-Powered Terminal Coding",
+        description:
+          "Anthropic's agentic coding tool that lives in the terminal. I use Claude Code to build and iterate on projects at a pace that would not be possible manually. This entire portfolio was built with Claude Code.",
+      },
+      {
+        name: "OpenAI Codex",
+        subtitle: "Code Generation and Completion",
+        description:
+          "OpenAI's code-focused model for generating, explaining, and completing code. Useful for quickly prototyping ideas and getting functional snippets without context-switching out of the design flow.",
+      },
+      {
+        name: "ChatGPT",
+        subtitle: "General Purpose AI",
+        description:
+          "A solid all-rounder for quick lookups, second opinions, and brainstorming. I use it as a secondary assistant when I want a different perspective or need a fast, broad answer.",
       },
     ],
   },

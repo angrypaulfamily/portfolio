@@ -19,8 +19,17 @@ const toolIcons: Record<string, string> = {
   "Adobe Photoshop": "/images/toolkit/photoshop.svg",
   "Adobe After Effects": "/images/toolkit/after-effects.png",
   "Adobe Premiere Pro": "/images/toolkit/premiere-pro.png",
-  "Notion": "/images/toolkit/notion.svg",
-  "Claude": "/images/toolkit/chatgpt.svg",
+  "Relume": "/images/toolkit/relume.svg",
+  "Midjourney": "/images/toolkit/midjourney.svg",
+  "v0 by Vercel": "/images/toolkit/v0.svg",
+  "Lovable": "/images/toolkit/lovable.svg",
+  "Base44": "/images/toolkit/base44.svg",
+  "Bolt.new": "/images/toolkit/bolt.svg",
+  "Cursor": "/images/toolkit/cursor.svg",
+  "Claude": "/images/toolkit/claude.svg",
+  "Claude Code": "/images/toolkit/claude-code.svg",
+  "OpenAI Codex": "/images/toolkit/codex.svg",
+  "ChatGPT": "/images/toolkit/chatgpt.svg",
 };
 
 function ScrollReveal({ children, delay = 0, className = "" }: { children: React.ReactNode; delay?: number; className?: string }) {

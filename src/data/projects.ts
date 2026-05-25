@@ -75,6 +75,29 @@ export const projects: Project[] = [
     ],
   },
   {
+    slug: "media-net",
+    title: "Media.net",
+    type: ["Web Design", "Research", "UI/UX", "Ad Design"],
+    headline: "Boosting ad performance for some of the world's biggest publishers.",
+    overview:
+      "At Media.net, specialized in graphic design and ad performance for major publishers including Forbes, Apple News, WebMD, and Wikihow. Used Adobe Creative Suite and Figma to design, test, and refine ad creatives.",
+    accent: "emerald",
+    featured: true,
+    heroImage: "/images/projects/media-net/hero.png",
+    galleryImages: [
+      "/images/projects/media-net/hero.png",
+      "/images/projects/media-net/apple-news.png",
+      "/images/projects/media-net/webmd.png",
+      "/images/projects/media-net/wikihow.png",
+    ],
+    deliverables: [
+      "Strategic advertisements for Forbes.com targeting higher click-through rate",
+      "User behavior research to guide ad design direction",
+      "Landing pages, logos, icons, and digital assets",
+      "UI/UX design, video editing, and photo manipulation across the ad tech sector",
+    ],
+  },
+  {
     slug: "luags-gallery",
     title: "Luags Gallery",
     type: ["Branding", "Web Design", "UI/UX", "Shopify"],
@@ -114,7 +137,7 @@ export const projects: Project[] = [
     slug: "graphic-design",
     title: "Graphic Design & Video",
     type: ["Social Media", "Branding", "Graphic Design", "Video Editing"],
-    headline: "Scroll-stopping content and brand identities — from social media to video production.",
+    headline: "Scroll-stopping content and brand identities from social media to video production.",
     overview:
       "A body of creative work spanning social media design, brand identity, and video production. Clients included Pizza Stock Exchange, Benzer, Drunken Monkeys, Blind Ch3mistry, Youth Opportunities Uprising, and Banish Shoes. Also includes motion and marketing work produced at ETSIPL.",
     accent: "pink",
@@ -142,29 +165,6 @@ export const projects: Project[] = [
       "Visual alignment with campaign goals across diverse client teams",
       "Marketing materials combining creativity with strategic thinking",
       "Motion graphics and video editing for brand films and social content",
-    ],
-  },
-  {
-    slug: "media-net",
-    title: "Media.net",
-    type: ["Web Design", "Research", "UI/UX", "Ad Design"],
-    headline: "Boosting ad performance for some of the world's biggest publishers.",
-    overview:
-      "At Media.net, specialized in graphic design and ad performance for major publishers including Forbes, Apple News, WebMD, and Wikihow. Used Adobe Creative Suite and Figma to design, test, and refine ad creatives.",
-    accent: "emerald",
-    featured: false,
-    heroImage: "/images/projects/media-net/hero.png",
-    galleryImages: [
-      "/images/projects/media-net/hero.png",
-      "/images/projects/media-net/apple-news.png",
-      "/images/projects/media-net/webmd.png",
-      "/images/projects/media-net/wikihow.png",
-    ],
-    deliverables: [
-      "Strategic advertisements for Forbes.com targeting higher click-through rate",
-      "User behavior research to guide ad design direction",
-      "Landing pages, logos, icons, and digital assets",
-      "UI/UX design, video editing, and photo manipulation across the ad tech sector",
     ],
   },
 ];
