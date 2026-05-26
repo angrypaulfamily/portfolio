@@ -198,15 +198,15 @@ export default function Home() {
 
             <ScrollReveal delay={0.1}>
               <p className="text-[#888] text-lg leading-relaxed mb-6">
-                I started out in graphic design and found my way into UI/UX naturally. I work
-                closely with CEOs, developers, marketing, and sales teams because communication is
-                what makes or breaks a project. I take designs from start to finish: research,
-                wireframing, prototyping, testing, handoff.
+                I own the full end-to-end design process: user research, user personas, user flows,
+                and information architecture through wireframing, prototyping, usability testing,
+                and developer handoff. I work closely with CEOs, developers, marketing, and sales
+                teams because communication is what makes or breaks a project.
               </p>
               <p className="text-[#888] text-lg leading-relaxed mb-10">
-                Lately I have been going deep into AI, using it actively in my design workflow and
-                picking up terminal-based tools and light software development. In a field that is
-                evolving fast, staying ahead of what AI can do is just part of the job now.
+                I measure what I ship using Google Analytics, Microsoft Clarity, and HubSpot, and
+                I actively integrate AI into every stage of the workflow. In a field that is
+                evolving fast, staying ahead is just part of the job.
               </p>
               <Link
                 href="/about"

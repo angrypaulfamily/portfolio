@@ -139,9 +139,9 @@ export default function AboutPage() {
 
             <ScrollReveal delay={0.1} className="space-y-8">
               {[
-                "I am a UI/UX designer with 5+ years of experience across web design, Shopify, graphic design, and video editing. I started out in graphic design and worked my way into full UX, building a process that goes all the way from research and user flows through wireframing, prototyping, usability testing, and developer handoff.",
-                "I have worked closely with CEOs, developers, marketing teams, and sales teams across a range of industries. For me, collaboration and communication are not just nice to have: they are how good work actually gets made.",
-                "I am also actively integrating AI into my workflow. From using AI tools for design generation and research to picking up terminal-based tools and light software development, I am always looking for ways to work smarter and deliver more.",
+                "I am a UI/UX designer with 5+ years of experience across web design, Shopify, branding, and AI-powered workflows. I practice user-centred design and own the full end-to-end process: from user research, user personas, user flows, and information architecture through wireframing, low-fidelity and high-fidelity prototyping, usability testing, and developer handoff.",
+                "I have worked closely with CEOs, developers, marketing teams, and sales teams across a range of industries. I measure what I ship: Google Analytics, Microsoft Clarity, and HubSpot Analytics are part of my process, not an afterthought. Collaboration and communication are not just nice to have: they are how good work actually gets made.",
+                "I actively integrate AI into my workflow: Claude, Midjourney, Cursor, and v0 for design generation, research, and prototyping. I also build with terminal-based tools and light software development. In a field that is evolving fast, staying ahead of what AI can do is just part of the job.",
                 "I do not compromise on quality. I go the extra mile because that is the standard I hold myself to, not because someone asked me to.",
               ].map((para, i) => (
                 <p key={i} className="text-[#888] text-xl leading-relaxed">{para}</p>
