@@ -9,8 +9,11 @@ export default function ContactPage() {
   return (
     <section className="min-h-[100svh] bg-[#0a0a0a] flex flex-col justify-center py-20 overflow-hidden relative">
       {/* Ghost text bg */}
-      <div className="absolute inset-0 flex items-center justify-center opacity-[0.025] pointer-events-none select-none overflow-hidden">
-        <span className="text-[25vw] font-black uppercase leading-none text-white whitespace-nowrap">
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden">
+        <span
+          className="text-[25vw] font-black uppercase leading-none whitespace-nowrap"
+          style={{ color: "rgba(255, 255, 255, 0.04)" }}
+        >
           TALK
         </span>
       </div>
@@ -36,7 +39,7 @@ export default function ContactPage() {
             >
               <span className="text-white">Let&apos;s</span>
               <br />
-              <span style={{ WebkitTextStroke: "2px #caff00", color: "transparent" }}>Talk.</span>
+              <span style={{ WebkitTextStroke: "2px #caff00", color: "#0a0a0a", paintOrder: "stroke fill" }}>Talk.</span>
             </motion.h1>
 
             <motion.p
