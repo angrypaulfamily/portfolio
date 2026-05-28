@@ -4,6 +4,8 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowUpRight, MapPin, Clock } from "lucide-react";
 import LinkedInIcon from "@/components/LinkedInIcon";
+import WhatsAppIcon from "@/components/WhatsAppIcon";
+import LineIcon from "@/components/LineIcon";
 
 export default function ContactPage() {
   return (
@@ -73,6 +75,24 @@ export default function ContactPage() {
               >
                 <LinkedInIcon size={16} />
                 LinkedIn
+              </a>
+              <a
+                href="https://wa.me/919002202845?text=Hi%20Keith%2C%20I%20came%20across%20your%20portfolio%20and%20would%20love%20to%20connect!"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-3 border border-[#2a2a2a] text-white font-bold px-7 py-4 rounded-full uppercase tracking-wide text-sm hover:border-[#caff00] hover:text-[#caff00] transition-colors"
+              >
+                <WhatsAppIcon size={16} />
+                WhatsApp
+              </a>
+              <a
+                href="https://line.me/ti/p/PXr2kz5-El"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-3 border border-[#2a2a2a] text-white font-bold px-7 py-4 rounded-full uppercase tracking-wide text-sm hover:border-[#caff00] hover:text-[#caff00] transition-colors"
+              >
+                <LineIcon size={16} />
+                Line
               </a>
             </motion.div>
 
