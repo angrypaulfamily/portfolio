@@ -142,7 +142,7 @@ export default function Navbar() {
           </div>
         </nav>
 
-        <div className="px-6 pb-8 text-[#333] text-xs">
+        <div className="px-6 pb-8 text-[#888] text-xs">
           &copy; 2026 Keith Paul
         </div>
       </div>

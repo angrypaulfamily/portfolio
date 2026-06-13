@@ -170,7 +170,7 @@ export default function ProjectView({ project }: { project: Project }) {
       {project.metrics && (
         <section className="bg-[#0e0e0e] border-y border-[#1a1a1a] py-16">
           <div className="max-w-7xl mx-auto px-6 md:px-10">
-            <p className="text-[#333] text-xs uppercase tracking-widest mb-10">
+            <p className="text-[#888] text-xs uppercase tracking-widest mb-10">
               Results -- 3 months post-launch
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-6 divide-y md:divide-y-0 md:divide-x divide-[#1a1a1a]">
