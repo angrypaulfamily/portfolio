@@ -85,8 +85,7 @@ export default function Home() {
 
               <FadeUp delay={0.35}>
                 <p className="text-[#888] text-lg md:text-xl font-medium max-w-md leading-relaxed mt-6">
-                  UI/UX Designer with 5+ years of experience. I design with purpose, build with AI,
-                  and ship with quality. No shortcuts.
+                  I own the full design process: user research, personas, wireframing, prototyping, usability testing, and developer handoff. I then measure every launch with Google Analytics, Clarity, and HubSpot to track the real business impact. The numbers below are what end-to-end ownership looks like.
                 </p>
               </FadeUp>
 

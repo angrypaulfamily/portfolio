@@ -46,13 +46,31 @@ export default function Navbar() {
             <span className="w-1.5 h-1.5 rounded-full bg-[#caff00] blink" />
           </Link>
 
+          {/* Desktop nav */}
+          <div className="hidden md:flex items-center gap-8">
+            {links.filter((l) => l.href !== "/").map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={`text-xs font-bold uppercase tracking-widest transition-colors ${
+                  pathname === link.href
+                    ? "text-[#caff00]"
+                    : "text-[#888] hover:text-white"
+                }`}
+              >
+                {link.label}
+              </Link>
+            ))}
+          </div>
+
           <div className="flex items-center gap-6">
             <span className="hidden md:block text-[#caff00] text-xs font-semibold uppercase tracking-widest">
               Available for work
             </span>
+            {/* Mobile hamburger */}
             <button
               onClick={() => setOpen(true)}
-              className="flex flex-col gap-1.5 group p-1"
+              className="flex md:hidden flex-col gap-1.5 group p-1"
               aria-label="Open menu"
             >
               <span className="block w-6 h-0.5 bg-white group-hover:bg-[#caff00] transition-colors" />
@@ -62,13 +80,13 @@ export default function Navbar() {
         </div>
       </nav>
 
-      {/* Full-screen overlay */}
+      {/* Mobile full-screen overlay */}
       <div
-        className={`fixed inset-0 z-[100] bg-[#0a0a0a] flex flex-col transition-all duration-500 ${
+        className={`fixed inset-0 z-[100] bg-[#0a0a0a] flex flex-col transition-all duration-500 md:hidden ${
           open ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         }`}
       >
-        <div className="max-w-7xl mx-auto px-6 md:px-10 h-16 flex items-center justify-between w-full">
+        <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between w-full">
           <span className="text-white font-black text-lg tracking-tight">KP</span>
           <button
             onClick={() => setOpen(false)}
@@ -79,7 +97,7 @@ export default function Navbar() {
           </button>
         </div>
 
-        <nav className="flex-1 flex flex-col justify-center px-6 md:px-10">
+        <nav className="flex-1 flex flex-col justify-center px-6">
           <ul className="space-y-1">
             {links.map((link, i) => (
               <li key={link.href}>
@@ -95,7 +113,7 @@ export default function Navbar() {
                     0{i + 1}
                   </span>
                   <span
-                    className={`text-4xl md:text-6xl font-black uppercase tracking-tight transition-colors group-hover:text-[#caff00] ${
+                    className={`text-4xl font-black uppercase tracking-tight transition-colors group-hover:text-[#caff00] ${
                       pathname === link.href ? "text-[#caff00]" : "text-white"
                     }`}
                   >
@@ -109,7 +127,7 @@ export default function Navbar() {
           <div className="mt-12 flex flex-col sm:flex-row gap-6">
             <a
               href="mailto:keithpaul00@gmail.com"
-              className="text-[#666] hover:text-white text-sm transition-colors"
+              className="text-[#888] hover:text-white text-sm transition-colors"
             >
               keithpaul00@gmail.com
             </a>
@@ -117,15 +135,15 @@ export default function Navbar() {
               href="https://www.linkedin.com/in/keith-paul-1450241a3/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[#666] hover:text-white text-sm transition-colors"
+              className="text-[#888] hover:text-white text-sm transition-colors"
             >
               LinkedIn
             </a>
           </div>
         </nav>
 
-        <div className="px-6 md:px-10 pb-8 text-[#333] text-xs">
-          &copy; 2025 Keith Paul
+        <div className="px-6 pb-8 text-[#333] text-xs">
+          &copy; 2026 Keith Paul
         </div>
       </div>
     </>
