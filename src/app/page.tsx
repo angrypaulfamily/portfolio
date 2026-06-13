@@ -24,12 +24,6 @@ const skills = [
 
 const featured = projects.filter((p) => p.featured);
 
-const metrics = [
-  { value: "3.6%", after: "13.8%", label: "Conversion rate" },
-  { value: "+54.9%", label: "Form submissions" },
-  { value: "+23%", label: "Session duration" },
-];
-
 function FadeUp({ children, delay = 0, className = "" }: { children: React.ReactNode; delay?: number; className?: string }) {
   return (
     <motion.div
@@ -77,7 +71,7 @@ export default function Home() {
                     Available for work
                   </span>
                   <span className="text-[#333]">·</span>
-                  <span className="text-[#555] text-xs uppercase tracking-widest">Remote / Bangkok</span>
+                  <span className="text-[#888] text-xs uppercase tracking-widest">Remote / Bangkok</span>
                 </div>
               </FadeUp>
 
@@ -97,6 +91,31 @@ export default function Home() {
               </FadeUp>
 
               <FadeUp delay={0.45}>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 mt-8 pt-8 border-t border-[#1a1a1a]">
+                  <div>
+                    <div className="flex items-end gap-2 mb-1.5">
+                      <span className="text-2xl font-black text-[#444] line-through">3.6%</span>
+                      <ArrowUpRight size={14} className="text-[#caff00] mb-0.5" />
+                      <span className="text-2xl font-black text-[#caff00]">13.8%</span>
+                    </div>
+                    <p className="text-[#888] text-[10px] font-bold uppercase tracking-widest mb-0.5">Conversion Rate</p>
+                    <p className="text-[#888] text-[11px]">E-commerce purchase completions</p>
+                  </div>
+                  <div>
+                    <p className="text-2xl font-black text-[#caff00] mb-1.5">+54.9%</p>
+                    <p className="text-[#888] text-[10px] font-bold uppercase tracking-widest mb-0.5">Form Submissions</p>
+                    <p className="text-[#888] text-[11px]">Lead generation form completions</p>
+                  </div>
+                  <div>
+                    <p className="text-2xl font-black text-[#caff00] mb-1.5">+23%</p>
+                    <p className="text-[#888] text-[10px] font-bold uppercase tracking-widest mb-0.5">Session Duration</p>
+                    <p className="text-[#888] text-[11px]">Average time on site per visit</p>
+                  </div>
+                </div>
+                <p className="text-[#444] text-[10px] uppercase tracking-widest mt-3">Measured over 3 months post-launch · Royi Sal website redesign</p>
+              </FadeUp>
+
+              <FadeUp delay={0.6}>
                 <div className="flex flex-col sm:flex-row gap-4 mt-8">
                   <Link
                     href="/projects"
@@ -142,47 +161,11 @@ export default function Home() {
         </div>
       </section>
 
-      {/* METRICS */}
-      <section className="bg-[#0e0e0e] border-y border-[#1a1a1a] py-20 md:py-28">
-        <div className="max-w-7xl mx-auto px-6 md:px-10">
-          <ScrollReveal className="flex items-center gap-4 mb-16">
-            <span className="text-[#caff00] text-xs font-mono font-bold">01</span>
-            <div className="h-px flex-1 bg-[#1a1a1a]" />
-            <span className="text-[#444] text-xs uppercase tracking-widest">Impact</span>
-          </ScrollReveal>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-6 divide-y md:divide-y-0 md:divide-x divide-[#1a1a1a]">
-            {metrics.map((m, i) => (
-              <ScrollReveal key={m.label} delay={i * 0.1} className="pt-8 md:pt-0 md:px-10 first:pt-0 first:md:pl-0 last:md:pr-0">
-                <div className="flex items-end gap-2 mb-2">
-                  {m.after ? (
-                    <>
-                      <span className="text-4xl md:text-5xl font-black text-[#333] line-through">{m.value}</span>
-                      <ArrowUpRight size={24} className="text-[#caff00] mb-1.5" />
-                      <span className="text-4xl md:text-5xl font-black text-[#caff00]">{m.after}</span>
-                    </>
-                  ) : (
-                    <span className="text-4xl md:text-5xl font-black text-[#caff00]">{m.value}</span>
-                  )}
-                </div>
-                <p className="text-[#555] text-sm font-medium uppercase tracking-widest">{m.label}</p>
-              </ScrollReveal>
-            ))}
-          </div>
-
-          <ScrollReveal delay={0.3} className="mt-10 pt-10 border-t border-[#1a1a1a]">
-            <p className="text-[#2a2a2a] text-xs uppercase tracking-widest">
-              Measured over 3 months post-launch, Royi Sal website redesign
-            </p>
-          </ScrollReveal>
-        </div>
-      </section>
-
       {/* ABOUT SNIPPET */}
       <section className="bg-[#0a0a0a] py-20 md:py-32 overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 md:px-10">
           <ScrollReveal className="flex items-center gap-4 mb-16">
-            <span className="text-[#caff00] text-xs font-mono font-bold">02</span>
+            <span className="text-[#caff00] text-xs font-mono font-bold">01</span>
             <div className="h-px flex-1 bg-[#1a1a1a]" />
             <span className="text-[#444] text-xs uppercase tracking-widest">About</span>
           </ScrollReveal>
@@ -224,7 +207,7 @@ export default function Home() {
       <section className="bg-[#0e0e0e] border-t border-[#1a1a1a] py-20 md:py-28">
         <div className="max-w-7xl mx-auto px-6 md:px-10">
           <ScrollReveal className="flex items-center gap-4 mb-16">
-            <span className="text-[#caff00] text-xs font-mono font-bold">03</span>
+            <span className="text-[#caff00] text-xs font-mono font-bold">02</span>
             <div className="h-px flex-1 bg-[#1a1a1a]" />
             <span className="text-[#444] text-xs uppercase tracking-widest">Work</span>
           </ScrollReveal>
@@ -238,7 +221,7 @@ export default function Home() {
             <ScrollReveal delay={0.1}>
               <Link
                 href="/projects"
-                className="hidden md:inline-flex items-center gap-2 text-[#555] hover:text-[#caff00] text-sm font-bold uppercase tracking-widest transition-colors"
+                className="hidden md:inline-flex items-center gap-2 text-[#888] hover:text-[#caff00] text-sm font-bold uppercase tracking-widest transition-colors"
               >
                 All work
                 <ArrowUpRight size={14} />

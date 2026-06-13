@@ -56,7 +56,7 @@ export default function ProjectsPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.25 }}
-            className="text-[#555] text-lg max-w-xl"
+            className="text-[#888] text-lg max-w-xl"
           >
             UI/UX design, Shopify, branding, and ad design. From research to production.
           </motion.p>

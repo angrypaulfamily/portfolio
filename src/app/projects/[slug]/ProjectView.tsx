@@ -12,7 +12,7 @@ import type { Project } from "@/data/projects";
 import { projects } from "@/data/projects";
 
 const accentHex: Record<string, string> = {
-  violet: "#7C3AED",
+  violet: "#8B5CF6",
   cyan: "#06B6D4",
   orange: "#F97316",
   pink: "#EC4899",
@@ -177,7 +177,7 @@ export default function ProjectView({ project }: { project: Project }) {
               {project.metrics.map((m, i) => (
                 <ScrollReveal key={m.label} delay={i * 0.1} className="pt-8 md:pt-0 md:px-10 first:pt-0 first:md:pl-0 last:md:pr-0">
                   <p className="text-5xl font-black mb-2" style={{ color }}>{m.value}</p>
-                  <p className="text-[#555] text-xs uppercase tracking-widest">{m.label}</p>
+                  <p className="text-[#888] text-xs uppercase tracking-widest">{m.label}</p>
                 </ScrollReveal>
               ))}
             </div>
@@ -211,7 +211,7 @@ export default function ProjectView({ project }: { project: Project }) {
                       </span>
                       <h3 className="text-white font-black text-2xl">{s.heading}</h3>
                     </div>
-                    <p className="text-[#777] leading-relaxed pl-9">{s.body}</p>
+                    <p className="text-[#888] leading-relaxed pl-9">{s.body}</p>
                   </div>
                   {s.image && (
                     <button

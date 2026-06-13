@@ -29,7 +29,7 @@ export default function Footer() {
         <div className="flex items-center gap-2">
           <span className="text-white font-black text-lg">KP</span>
           <span className="w-1.5 h-1.5 rounded-full bg-[#caff00] blink" />
-          <span className="text-[#444] text-sm ml-2">Remote / Bangkok · 2026</span>
+          <span className="text-[#888] text-sm ml-2">Remote / Bangkok · 2026</span>
         </div>
 
         <nav className="flex flex-wrap gap-6">
@@ -39,7 +39,7 @@ export default function Footer() {
               <Link
                 key={href}
                 href={href}
-                className="text-[#555] hover:text-white text-sm transition-colors"
+                className="text-[#888] hover:text-white text-sm transition-colors"
               >
                 {label}
               </Link>
@@ -47,7 +47,7 @@ export default function Footer() {
           })}
         </nav>
 
-        <p className="text-[#444] text-xs">&copy; 2026 Keith Paul. All rights reserved.</p>
+        <p className="text-[#888] text-xs">&copy; 2026 Keith Paul. All rights reserved.</p>
       </div>
     </footer>
   );

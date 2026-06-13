@@ -6,7 +6,7 @@ import ContactCTA from "@/components/ContactCTA";
 import { toolkit } from "@/data/toolkit";
 
 const colorHex: Record<string, string> = {
-  violet: "#7C3AED",
+  violet: "#8B5CF6",
   cyan: "#06B6D4",
   orange: "#F97316",
   pink: "#EC4899",
@@ -73,7 +73,7 @@ export default function ToolkitPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.25 }}
-            className="text-[#555] text-lg max-w-xl"
+            className="text-[#888] text-lg max-w-xl"
           >
             Curated tools across design, development, and AI-powered workflows. Every tool earns
             its place by making the work better.
@@ -124,7 +124,7 @@ export default function ToolkitPage() {
                         <p className="text-xs uppercase tracking-widest mb-3" style={{ color, opacity: 0.7 }}>
                           {tool.subtitle}
                         </p>
-                        <p className="text-[#666] text-sm leading-relaxed">{tool.description}</p>
+                        <p className="text-[#888] text-sm leading-relaxed">{tool.description}</p>
                       </div>
                     </ScrollReveal>
                   );

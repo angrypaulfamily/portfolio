@@ -48,7 +48,7 @@ export default function ContactPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.3 }}
-              className="text-[#555] text-lg max-w-md mb-10"
+              className="text-[#888] text-lg max-w-md mb-10"
             >
               Whether you have a project in mind or just want to connect, I would love to hear from
               you.
@@ -102,13 +102,13 @@ export default function ContactPage() {
               transition={{ duration: 0.7, delay: 0.5 }}
               className="flex flex-col sm:flex-row gap-6 border-t border-[#1a1a1a] pt-10"
             >
-              <div className="flex items-center gap-3 text-[#555] text-sm">
+              <div className="flex items-center gap-3 text-[#888] text-sm">
                 <span className="w-8 h-8 rounded-full bg-[#1a1a1a] flex items-center justify-center shrink-0">
                   <MapPin size={13} className="text-[#caff00]" />
                 </span>
                 Remote / Bangkok
               </div>
-              <div className="flex items-center gap-3 text-[#555] text-sm">
+              <div className="flex items-center gap-3 text-[#888] text-sm">
                 <span className="w-8 h-8 rounded-full bg-[#1a1a1a] flex items-center justify-center shrink-0">
                   <Clock size={13} className="text-[#caff00]" />
                 </span>

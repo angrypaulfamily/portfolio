@@ -84,7 +84,7 @@ export default function AboutPage() {
             {accolades.map((a) => (
               <div key={a.label}>
                 <p className="text-white font-black text-xl">{a.value}</p>
-                <p className="text-[#444] text-xs uppercase tracking-widest mt-1">{a.label}</p>
+                <p className="text-[#888] text-xs uppercase tracking-widest mt-1">{a.label}</p>
               </div>
             ))}
           </motion.div>
@@ -117,7 +117,7 @@ export default function AboutPage() {
                     { label: "Status", value: "Available", highlight: true },
                   ].map((item) => (
                     <div key={item.label}>
-                      <p className="text-[#444] text-[10px] uppercase tracking-widest mb-1">{item.label}</p>
+                      <p className="text-[#888] text-[10px] uppercase tracking-widest mb-1">{item.label}</p>
                       <p className={`font-bold text-sm ${item.highlight ? "text-[#caff00]" : "text-white"}`}>
                         {item.value}
                         {item.highlight && <span className="w-1.5 h-1.5 rounded-full bg-[#caff00] inline-block ml-2 blink" />}
@@ -166,7 +166,7 @@ export default function AboutPage() {
               const inner = (
                 <>
                   <div>
-                    <span className="text-[#555] text-xs font-mono">{job.period}</span>
+                    <span className="text-[#888] text-xs font-mono">{job.period}</span>
                   </div>
                   <div>
                     <div className="flex items-center gap-3 mb-4">
@@ -178,7 +178,7 @@ export default function AboutPage() {
                     </div>
                     <ul className="space-y-2">
                       {job.bullets.map((b) => (
-                        <li key={b} className="flex items-start gap-3 text-[#666] text-sm">
+                        <li key={b} className="flex items-start gap-3 text-[#888] text-sm">
                           <span className="text-[#333] mt-0.5 shrink-0">--</span>
                           {b}
                         </li>
@@ -218,7 +218,7 @@ export default function AboutPage() {
                 <div className="bg-[#111] border border-[#1e1e1e] rounded-2xl p-8 hover:border-[#2a2a2a] transition-colors">
                   <span className="text-[#caff00] text-xs font-bold uppercase tracking-widest">{e.year}</span>
                   <h3 className="text-white font-black text-lg mt-3 mb-1">{e.degree}</h3>
-                  <p className="text-[#555] text-sm">{e.institution}</p>
+                  <p className="text-[#888] text-sm">{e.institution}</p>
                 </div>
               </ScrollReveal>
             ))}

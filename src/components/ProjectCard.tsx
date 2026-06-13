@@ -4,7 +4,7 @@ import { ArrowUpRight } from "lucide-react";
 import type { Project } from "@/data/projects";
 
 const accentColors: Record<string, string> = {
-  violet: "#7C3AED",
+  violet: "#8B5CF6",
   cyan: "#06B6D4",
   orange: "#F97316",
   pink: "#EC4899",
@@ -75,14 +75,14 @@ export default function ProjectCard({
             />
           </div>
 
-          <p className="text-[#666] text-sm leading-relaxed">{project.headline}</p>
+          <p className="text-[#888] text-sm leading-relaxed">{project.headline}</p>
 
           {project.metrics && (
             <div className="grid grid-cols-3 gap-2 mt-5 pt-5 border-t border-[#1e1e1e]">
               {project.metrics.map((m) => (
                 <div key={m.label}>
                   <p className="text-xs font-black text-white">{m.value}</p>
-                  <p className="text-[10px] text-[#555] mt-0.5">{m.label}</p>
+                  <p className="text-[10px] text-[#888] mt-0.5">{m.label}</p>
                 </div>
               ))}
             </div>
