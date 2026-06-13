@@ -111,7 +111,6 @@ export default function Home() {
                     <p className="text-[#888] text-[11px]">Average time on site per visit</p>
                   </div>
                 </div>
-                <p className="text-[#444] text-[10px] uppercase tracking-widest mt-3">Measured over 3 months post-launch · Royi Sal website redesign</p>
               </FadeUp>
 
               <FadeUp delay={0.6}>
