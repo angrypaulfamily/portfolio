@@ -98,7 +98,7 @@ export default function Home() {
                       <span className="text-2xl font-black text-[#caff00]">13.8%</span>
                     </div>
                     <p className="text-[#888] text-[10px] font-bold uppercase tracking-widest mb-0.5">Conversion Rate</p>
-                    <p className="text-[#888] text-[11px]">E-commerce purchase completions</p>
+                    <p className="text-[#888] text-[11px]">Contact page visitors who submitted the enquiry form</p>
                   </div>
                   <div>
                     <p className="text-2xl font-black text-[#caff00] mb-1.5">+54.9%</p>
