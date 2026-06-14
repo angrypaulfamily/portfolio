@@ -1,15 +1,30 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans } from "next/font/google";
+import { Plus_Jakarta_Sans, Space_Grotesk, DM_Mono } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
-import CustomCursor from "@/components/CustomCursor";
+import NavbarConditional from "@/components/NavbarConditional";
+import FooterConditional from "@/components/FooterConditional";
+import NavbarSpacer from "@/components/NavbarSpacer";
+import CustomCursorConditional from "@/components/CustomCursorConditional";
 import { Analytics } from "@vercel/analytics/next";
 
 const font = Plus_Jakarta_Sans({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700", "800"],
   variable: "--font-sans",
+  display: "swap",
+});
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-space",
+  display: "swap",
+});
+
+const dmMono = DM_Mono({
+  subsets: ["latin"],
+  weight: ["300", "400", "500"],
+  variable: "--font-dm",
   display: "swap",
 });
 
@@ -26,12 +41,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${font.variable} grain`}>
+    <html lang="en" className={`${font.variable} ${spaceGrotesk.variable} ${dmMono.variable} grain`}>
       <body className="min-h-screen flex flex-col font-sans bg-[#0a0a0a] text-white">
-        <CustomCursor />
-        <Navbar />
-        <main className="flex-1 pt-16">{children}</main>
-        <Footer />
+        <CustomCursorConditional />
+        <NavbarConditional />
+        <main className="flex-1"><NavbarSpacer />{children}</main>
+        <FooterConditional />
         <Analytics />
       </body>
     </html>
