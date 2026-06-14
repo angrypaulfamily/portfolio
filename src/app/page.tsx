@@ -14,9 +14,10 @@ const SECTIONS: Sec[] = [
   { id: "declaration", label: "Statement",   col: 1, row: 0, headingId: "h-declaration" },
   { id: "proof",       label: "Proof",       col: 2, row: 0, headingId: "h-proof" },
   { id: "mumbai",      label: "Mumbai",      col: 0, row: 1, headingId: "h-mumbai" },
-  { id: "work",        label: "Work",        col: 1, row: 1, headingId: "h-work" },
+  { id: "highlights",  label: "Highlights",  col: 1, row: 1, headingId: "h-highlights" },
   { id: "bangkok",     label: "Bangkok",     col: 2, row: 1, headingId: "h-bangkok" },
   { id: "contact",     label: "Contact",     col: 1, row: 2, headingId: "h-contact" },
+  { id: "work",        label: "Work",        col: 2, row: 2, headingId: "h-work" },
 ];
 
 const works = [
@@ -29,12 +30,13 @@ const works = [
 
 // Hub direction previews — point in the direction of each section on the canvas.
 const PREVIEWS: { to: string; label: string; teaser: string; arrow: string; gridPos: string }[] = [
-  { to: "identity",    label: "01 · IDENTITY",  teaser: "Keith Paul · UI/UX Designer",        arrow: "↖", gridPos: "top-left"     },
-  { to: "declaration", label: "02 · STATEMENT", teaser: "I own the full process.",            arrow: "↑", gridPos: "top-center"   },
-  { to: "proof",       label: "03 · PROOF",     teaser: "3.6% → 13.8% conversion rate",        arrow: "↗", gridPos: "top-right"    },
-  { to: "mumbai",      label: "04 · MUMBAI",    teaser: "Where it started · 2019–2022",       arrow: "←", gridPos: "middle-left"  },
-  { to: "bangkok",     label: "06 · BANGKOK",   teaser: "Where it is now · 2022–Now",         arrow: "→", gridPos: "middle-right" },
-  { to: "contact",     label: "07 · CONTACT",   teaser: "keithpaul00@gmail.com",              arrow: "↓", gridPos: "bottom-center" },
+  { to: "identity",    label: "01 · IDENTITY",  teaser: "Keith Paul · UI/UX Designer",         arrow: "↖", gridPos: "top-left"     },
+  { to: "declaration", label: "02 · STATEMENT", teaser: "I own the full process.",             arrow: "↑", gridPos: "top-center"   },
+  { to: "proof",       label: "03 · PROOF",     teaser: "+54.9% forms · +23% engagement",      arrow: "↗", gridPos: "top-right"    },
+  { to: "mumbai",      label: "04 · MUMBAI",    teaser: "Where it started · 2019–2022",        arrow: "←", gridPos: "middle-left"  },
+  { to: "bangkok",     label: "06 · BANGKOK",   teaser: "Where it is now · 2022–Now",          arrow: "→", gridPos: "middle-right" },
+  { to: "contact",     label: "07 · CONTACT",   teaser: "keithpaul00@gmail.com",               arrow: "↓", gridPos: "bottom-center" },
+  { to: "work",        label: "08 · CASE STUDIES", teaser: "5 projects · Royi Sal, Media.net…", arrow: "↘", gridPos: "bottom-right" },
 ];
 
 // ─── Reduced-motion hook ─────────────────────────────────────────────────────
@@ -111,8 +113,8 @@ function MiniMap({ current, goTo, scrollRef }: {
 
   const grid: (string | null)[][] = [
     ["identity", "declaration", "proof"],
-    ["mumbai", "work", "bangkok"],
-    [null, "contact", null],
+    ["mumbai", "highlights", "bangkok"],
+    [null, "contact", "work"],
   ];
 
   return (
@@ -177,7 +179,7 @@ function PreviewCard({ data, goTo, align = "left" }: {
 // ─── Page ─────────────────────────────────────────────────────────────────────
 export default function Home() {
   const scrollRef = useRef<HTMLDivElement>(null);
-  const [current, setCurrent] = useState("work");
+  const [current, setCurrent] = useState("highlights");
   const [showHint, setShowHint] = useState(true);
   const [ready, setReady] = useState(false);
   const reduced = useReducedMotion();
@@ -304,7 +306,7 @@ export default function Home() {
   return (
     <>
       {/* Skip link */}
-      <a href="#h-work" className="sr-only-x focus:not-sr-only-x fixed top-3 left-3 z-[100] bg-black text-white font-bold text-xs uppercase tracking-wider rounded">
+      <a href="#h-highlights" className="sr-only-x focus:not-sr-only-x fixed top-3 left-3 z-[100] bg-black text-white font-bold text-xs uppercase tracking-wider rounded">
         Skip to main content
       </a>
 
@@ -378,11 +380,12 @@ export default function Home() {
           </svg>
 
           {/* ═════════════════════════════════
-              WORK / HUB (col 1, row 1) — DEFAULT VIEW
-              First in DOM so mobile/SR users see Work first.
+              HIGHLIGHTS / HUB (col 1, row 1) — DEFAULT VIEW
+              What I deliver. The number that hits, then capabilities.
+              First in DOM so mobile/SR users see this first.
           ═════════════════════════════════ */}
           <section
-            aria-labelledby="h-work"
+            aria-labelledby="h-highlights"
             className="canvas-section absolute"
             style={{ left: "100vw", top: "100vh", width: "100vw", height: "100vh" }}
           >
@@ -393,45 +396,60 @@ export default function Home() {
               <div className="flex justify-center"><PreviewCard data={PREVIEWS[1]} goTo={goTo} align="center" /></div>
               <div className="flex justify-end"><PreviewCard data={PREVIEWS[2]} goTo={goTo} align="right" /></div>
 
-              {/* MIDDLE ROW — Mumbai (W), WORK (center), Bangkok (E) */}
+              {/* MIDDLE ROW — Mumbai (W), HIGHLIGHTS (center), Bangkok (E) */}
               <div className="flex items-center"><PreviewCard data={PREVIEWS[3]} goTo={goTo} align="left" /></div>
 
-              <div className="flex flex-col justify-center min-w-0 px-4 md:px-8">
-                <p className="text-[10px] text-black/55 uppercase tracking-[0.3em] mb-3 font-bold" style={{ fontFamily: DM }}>
-                  05 · Selected Work
-                </p>
-                <h2
-                  id="h-work"
-                  tabIndex={-1}
-                  className="canvas-focus text-[7vw] md:text-[3.6vw] font-black uppercase leading-none tracking-[-0.04em] text-black mb-6"
+              <div className="flex flex-col justify-center min-w-0 px-3 md:px-8">
+                <p
+                  className="text-[10px] text-black/55 uppercase tracking-[0.3em] mb-3 font-bold"
+                  style={{ fontFamily: DM }}
                 >
-                  My work.
+                  05 · WHAT I DELIVER
+                </p>
+
+                <h2
+                  id="h-highlights"
+                  tabIndex={-1}
+                  className="canvas-focus text-[6.5vw] md:text-[3.2vw] font-black uppercase leading-[1.0] tracking-[-0.04em] text-black mb-5"
+                >
+                  I design{" "}
+                  <span className="text-[#cc2400]">what converts.</span>
                 </h2>
 
-                <ul className="border-t border-black/15">
-                  {works.map((w) => (
-                    <li key={w.slug}>
-                      <Link
-                        href={`/projects/${w.slug}`}
-                        className="canvas-focus group flex items-baseline gap-3 md:gap-6 py-3 md:py-[14px] border-b border-black/10 hover:border-black/30 transition-colors"
-                      >
-                        <span
-                          className="text-[10px] text-black/55 group-hover:text-[#cc2400] transition-colors shrink-0 w-7 tabular-nums font-bold"
-                          style={{ fontFamily: DM }}
-                        >
-                          {w.n}
-                        </span>
-                        <span className="text-[4.5vw] md:text-[1.8vw] font-black uppercase tracking-[-0.04em] text-black flex-1 leading-none truncate">
-                          {w.title}
-                        </span>
-                        <span
-                          className="hidden md:block text-[10px] text-black/55 uppercase tracking-[0.18em] shrink-0 font-bold"
-                          style={{ fontFamily: DM }}
-                        >
-                          {w.kpi}
-                        </span>
-                        <span aria-hidden className="text-sm text-black/40 group-hover:text-[#cc2400] transition-colors shrink-0">→</span>
-                      </Link>
+                {/* Hero proof number */}
+                <div className="mb-5 border-y border-black/15 py-4">
+                  <div className="flex items-end gap-3 md:gap-4 flex-wrap">
+                    <span className="text-[10vw] md:text-[4.5vw] font-black leading-none text-black/30 line-through tabular-nums">
+                      3.6%
+                    </span>
+                    <span aria-hidden className="text-[7vw] md:text-[3vw] font-black leading-none text-[#ff2d00]">→</span>
+                    <span className="text-[10vw] md:text-[4.5vw] font-black leading-none text-black tabular-nums">
+                      13.8%
+                    </span>
+                  </div>
+                  <p
+                    className="text-[10px] md:text-[11px] text-black/65 uppercase tracking-[0.2em] mt-2 font-bold"
+                    style={{ fontFamily: DM }}
+                  >
+                    Tripled conversion · +54.9% forms · +23% engagement
+                  </p>
+                </div>
+
+                {/* Capabilities */}
+                <ul
+                  className="space-y-1.5 text-[13px] md:text-[14px] text-black/85 leading-snug"
+                  aria-label="Capabilities"
+                >
+                  {[
+                    "End-to-end UX — research, design, developer handoff",
+                    "Conversion rate optimization (CRO)",
+                    "Brand identity from zero · Shopify · Mobile-first",
+                    "Design systems · WCAG accessibility",
+                    "AI workflows — Claude, v0, Cursor, Midjourney",
+                  ].map((s, i) => (
+                    <li key={i} className="flex gap-2.5">
+                      <span aria-hidden className="text-[#cc2400] font-bold shrink-0">+</span>
+                      <span>{s}</span>
                     </li>
                   ))}
                 </ul>
@@ -439,8 +457,62 @@ export default function Home() {
 
               <div className="flex items-center justify-end"><PreviewCard data={PREVIEWS[4]} goTo={goTo} align="right" /></div>
 
-              {/* BOTTOM ROW — Contact (S) spanning full width */}
-              <div className="col-span-3 flex justify-center"><PreviewCard data={PREVIEWS[5]} goTo={goTo} align="center" /></div>
+              {/* BOTTOM ROW — empty (SW), Contact (S), Work (SE) */}
+              <div />
+              <div className="flex justify-center"><PreviewCard data={PREVIEWS[5]} goTo={goTo} align="center" /></div>
+              <div className="flex justify-end"><PreviewCard data={PREVIEWS[6]} goTo={goTo} align="right" /></div>
+            </div>
+          </section>
+
+          {/* ═════════════════════════════════ WORK / CASE STUDIES (col 2, row 2) ═════════════════════════════════ */}
+          <section
+            aria-labelledby="h-work"
+            className="canvas-section absolute"
+            style={{ left: "200vw", top: "200vh", width: "100vw", height: "100vh" }}
+          >
+            <div className="relative w-full h-full px-7 md:px-12 py-12 flex flex-col justify-center">
+              <p
+                className="text-[10px] text-black/30 uppercase tracking-[0.3em] mb-4"
+                style={{ fontFamily: DM }}
+              >
+                08 · CASE STUDIES
+              </p>
+
+              <h2
+                id="h-work"
+                tabIndex={-1}
+                className="canvas-focus text-[10vw] md:text-[5vw] font-black uppercase leading-none tracking-[-0.04em] text-black mb-10"
+              >
+                Selected work.
+              </h2>
+
+              <ul className="border-t border-black/15">
+                {works.map((w) => (
+                  <li key={w.slug}>
+                    <Link
+                      href={`/projects/${w.slug}`}
+                      className="canvas-focus group flex items-baseline gap-3 md:gap-6 py-3 md:py-4 border-b border-black/10 hover:border-black/30 transition-colors"
+                    >
+                      <span
+                        className="text-[10px] text-black/55 group-hover:text-[#cc2400] transition-colors shrink-0 w-7 tabular-nums font-bold"
+                        style={{ fontFamily: DM }}
+                      >
+                        {w.n}
+                      </span>
+                      <span className="text-[5vw] md:text-[2.2vw] font-black uppercase tracking-[-0.04em] text-black flex-1 leading-none">
+                        {w.title}
+                      </span>
+                      <span
+                        className="hidden md:block text-[10px] text-black/55 uppercase tracking-[0.18em] shrink-0 font-bold"
+                        style={{ fontFamily: DM }}
+                      >
+                        {w.kpi}
+                      </span>
+                      <span aria-hidden className="text-sm text-black/40 group-hover:text-[#cc2400] transition-colors shrink-0">→</span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
             </div>
           </section>
 
