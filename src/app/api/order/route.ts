@@ -1,6 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 import Razorpay from "razorpay";
 import { supabaseAdmin } from "@/lib/supabase";
+import type { QuizAnswers } from "@/lib/supabase";
+
+const VERDICT_PRICE = 49;
 
 export async function POST(req: NextRequest) {
   const razorpay = new Razorpay({
@@ -9,22 +12,17 @@ export async function POST(req: NextRequest) {
   });
   try {
     const body = await req.json();
-    const { amount, phone_ids, tier } = body as {
-      amount: number;
+    const { phone_ids, quiz_answers } = body as {
       phone_ids: string[];
-      tier: "pick" | "full";
+      quiz_answers?: QuizAnswers;
     };
 
-    if (!amount || !phone_ids?.length || !tier) {
+    if (!phone_ids?.length || phone_ids.length > 5) {
       return NextResponse.json({ error: "Invalid request" }, { status: 400 });
     }
 
-    if (amount !== 49 && amount !== 99) {
-      return NextResponse.json({ error: "Invalid amount" }, { status: 400 });
-    }
-
     const rzpOrder = await razorpay.orders.create({
-      amount: amount * 100,
+      amount: VERDICT_PRICE * 100,
       currency: "INR",
       receipt: `kp_${Date.now()}`,
     });
@@ -32,9 +30,10 @@ export async function POST(req: NextRequest) {
     const db = supabaseAdmin();
     const { error } = await db.from("orders").insert({
       razorpay_order_id: rzpOrder.id,
-      amount,
-      tier,
+      amount: VERDICT_PRICE,
+      tier: "verdict",
       phone_ids,
+      quiz_answers: quiz_answers ?? null,
       status: "pending",
     });
 
@@ -44,7 +43,7 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json({
       order_id: rzpOrder.id,
-      amount,
+      amount: VERDICT_PRICE,
       key: process.env.RAZORPAY_KEY_ID,
     });
   } catch (err) {

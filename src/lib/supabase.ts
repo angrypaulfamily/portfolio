@@ -39,13 +39,23 @@ export type Phone = {
   launch_date: string | null;
 };
 
+export type QuizAnswers = {
+  budget: string;
+  priority: string;
+  charging: string;
+  brand: string;
+};
+
 export type Order = {
   id: string;
   razorpay_order_id: string;
   amount: number;
-  tier: "pick" | "full";
+  tier: "verdict";
   phone_ids: string[];
   status: "pending" | "paid";
   verdict: string | null;
+  quiz_answers: QuizAnswers | null;
+  contact_email: string | null;
+  contact_whatsapp: string | null;
   created_at: string;
 };
